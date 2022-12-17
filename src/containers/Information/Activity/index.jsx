@@ -36,12 +36,12 @@ const ActivityInformation = () => {
 			subtitle : 'Merupakan sebuah wadah dimana kita dapat menyalurkan minat, bakat dan hobi khusunya bagi siswa. Dalam lingkup sekolah PORSENI biasanya dilaksanakan setiap tahunnya setelah semester.',
 			date : 'Juli, 2022'
 		},
-		{
-			img : img,
-			title : 'Apresiasi Kemerdekaan RI',
-			subtitle : 'Mengadakan perlombaan anak - anak ',
-			date : 'Agustus, 2022'
-		},
+		// {
+		// 	img : img,
+		// 	title : 'Apresiasi Kemerdekaan RI',
+		// 	subtitle : 'Mengadakan perlombaan anak - anak ',
+		// 	date : 'Agustus, 2022'
+		// },
 	]
 
 	const achievement = [
