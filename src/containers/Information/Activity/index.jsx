@@ -30,12 +30,12 @@ const ActivityInformation = () => {
 			subtitle : 'Olahraga renang selain bisa membuat tubuh lebih sehat juga bisa melatih anak lebih berani dan mandiri serta mengasah kemampuan motorik kasar anak melalui berenang.',
 			date : 'Tiap bulan sekali hari Minggu'
 		},
-		{
-			img : img,
-			title : 'Pekan Olahraga dan Seni (Porseni)',
-			subtitle : 'Merupakan sebuah wadah dimana kita dapat menyalurkan minat, bakat dan hobi khusunya bagi siswa. Dalam lingkup sekolah PORSENI biasanya dilaksanakan setiap tahunnya setelah semester.',
-			date : 'Juli, 2022'
-		},
+		// {
+		// 	img : img,
+		// 	title : 'Pekan Olahraga dan Seni (Porseni)',
+		// 	subtitle : 'Merupakan sebuah wadah dimana kita dapat menyalurkan minat, bakat dan hobi khusunya bagi siswa. Dalam lingkup sekolah PORSENI biasanya dilaksanakan setiap tahunnya setelah semester.',
+		// 	date : 'Juli, 2022'
+		// },
 		// {
 		// 	img : img,
 		// 	title : 'Apresiasi Kemerdekaan RI',
