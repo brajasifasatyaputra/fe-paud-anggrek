@@ -1,0 +1,71 @@
+@import '../../styles/base';
+
+.video-section {
+  margin-top: 7%;
+  margin-bottom: 120px;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+.gallery-category {
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 3%;
+  @include apply-at-sm-md-size {
+    font-size: 14px;
+  }
+}
+.gallery-video-wrapper {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  width: 100%;
+  @include apply-at-sm-md-size {
+    padding: 0;
+  }
+}
+.slider {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.offerItemWrapper {
+  height: fit-content;
+  width: 80%;
+  @include apply-at-sm-md-size {
+    padding-bottom: 0;
+    height: 100px;
+  }
+}
+.active-video {
+  position: relative;
+  width: 680px;
+  height: 380px;
+  transform: scale(1);
+  transition: transform 1500ms;
+  opacity: 1;
+  @include apply-at-sm-md-size {
+    max-height: 290px;
+  }
+}
+.video {
+  margin: 0 auto;
+  transform: scale(0.5);
+  transition: transform 500ms;
+  opacity: 0.9;
+}
+.youtube {
+  width: 680px;
+  height: 380px;
+  @include apply-at-sm-md-size {
+    height: 220px;
+  }
+}
+.gallery-caption {
+  margin-top: 2%;
+  margin-bottom: 5%;
+  font-size: 16px;
+  @include apply-at-sm-md-size {
+    margin-bottom: 0;
+    font-size: 10px;
+  }
+}

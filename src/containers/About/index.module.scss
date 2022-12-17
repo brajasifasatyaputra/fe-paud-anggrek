@@ -1,0 +1,132 @@
+@import '../../styles/base';
+
+.container {
+	@include directionY;
+	overflow-x: hidden;
+	@include body;
+	.wrapper {
+		.body {
+			@include directionY;
+			margin-top: 12%;
+			background-color: $color-ultra-white;
+			align-items: center;
+			.btn {
+				width: 24%;
+				margin-top: 2%;
+				padding: 1%;
+				font-weight: bold;
+				text-align: center;
+				border-radius: 180px;
+				background-color: $color-pink-paw;
+			}
+			.mainBody {
+				@include directionX;
+				width: 90%;
+				justify-content: space-around;
+				margin-top: 5%;
+				.profileWrapper {
+					width: 50%;
+					.title {
+						font-size: 20px;
+						font-weight: bold;
+					}
+					ul > li {
+						.li {
+							@include directionX;
+							width: 100%;
+							justify-content: space-between;
+							.content {
+								min-width: 360px;
+								max-width: 360px;
+								width: 100%;
+							}
+						}
+					}
+				}
+				.photo {
+					width: 50%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					img {
+						width: 80%;
+					}
+				}
+			}
+			.subDetails {
+				@include directionX;
+				width: 90%;
+				gap: 5%;
+				// border: 1px solid red;
+				.leftDetails {
+					// border: 1px solid blue;
+					width: 50%;
+				}
+				.rightDetails {
+					@include directionY;
+					justify-content: center;
+					// align-items: center;
+				}
+			}
+			.structure {
+				display: flex;
+				// align-items: center;
+				justify-content: center;
+				margin-top: 5%;
+				margin-bottom: 5%;
+				// border: 1px solid red;
+				img {
+					width: 60%;
+				}
+			}
+			.galleryWrapper {
+				width: 100%;
+				@include directionY;
+				margin-top: 3%;
+				align-items: center;
+				// border: 1px solid red;
+				.btn {
+					width: 20%;
+					margin: 2% 0 5% 0;
+					padding: 1%;
+					font-weight: bold;
+					text-align: center;
+					border-radius: 180px;
+					background-color: $color-pink-paw;
+				}
+				.content {
+					@include directionX;
+					flex-wrap: wrap;
+					justify-content: center;
+					width: 90%;
+					gap: 4%;
+					margin-bottom: 5%;
+					// border: 1px solid red;
+					.card {
+						width: 30%;
+						color: $color-protanomali;
+						font-weight: bold;
+						text-align: center;
+						font-size: 24px;
+						// border: 1px solid blue;
+						.photoWrapper {
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							max-width: 310px;
+							padding: 4%;
+							border-radius: 25px;
+							// @include directionY;
+							flex-wrap: wrap;
+							background-color: $color-pink-paw;
+							// border: 1px solid green;
+							img {
+								max-width: 300px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

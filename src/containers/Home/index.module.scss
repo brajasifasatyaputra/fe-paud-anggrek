@@ -1,0 +1,110 @@
+@import "../../styles//base";
+
+.container {
+  overflow-x: hidden;
+  @include body;
+  .navbar {
+    margin-top: 12%;
+    background-image: url("../../static/images/home.webp");
+    height: 100%;
+    width: 100%;
+    top: 0;
+    border: none;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include apply-at-sm-md-size {
+      min-height: 442px;
+    }
+    @include apply-at-lg-size {
+      min-height: 700px;
+    }
+  }
+  .body {
+    @include directionY;
+    .bannerWrapper {
+      @include directionY;
+      text-align: center;
+      border: 1px solid $color-pink-paw;
+      background-color: $color-pink-paw;
+    }
+    .mainBody {
+      padding: 3%;
+      @include directionY;
+      .titleWrapper {  
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 40px;
+        .subtitle {
+          font-weight: 400;
+        }
+      }
+      .cardWrapper {
+        @include directionX;
+        justify-content: space-around;
+        width: 100%;
+        .card {
+          @include directionY;
+          width: 340px;
+          height: 375px;
+          background-color: $color-pink-paw;
+          border-radius: 25px;
+          margin-top: 2%;
+          .imgCard {
+            display: flex;
+            align-self: center;
+            width: 50%;
+            margin-top: 5%;
+          }
+          .textWrapper {
+            margin-top: 8%;
+            padding-left: 5%;
+            padding-right: 5%;
+            text-align: center;
+            .title {
+              font-weight: bold;
+              font-size: 16px;
+            }
+            .subtitle {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+    .bannerRegister {
+      width: 100%;
+      @include directionX;
+      background-color: $color-pink-paw;
+      .titleWrapper {
+        width: 60%;
+        text-align: left;
+        justify-content: center;
+        padding: 2% 0 2% 5%;
+        .title {
+          margin-bottom: 0;
+          font-size: 26px;
+          font-weight: bold;
+        }
+        .subtitle {
+          font-size: 20px;
+          margin-top: 0;
+        }
+      }
+      .btnWrapper {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .btn {
+          cursor: pointer;
+          text-align: center;
+          background-color: $color-protanomali;
+          color: $color-white;
+          border-radius: 50%;
+          padding: 3%;
+        }
+      }
+    }
+  }
+}

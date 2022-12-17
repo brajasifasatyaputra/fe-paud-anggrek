@@ -1,0 +1,165 @@
+@import "../../styles/base";
+
+.navbarContainer {
+  width: 100%;
+  height: 25%;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  background-color: $color-protanomali;
+  position: fixed;
+  z-index: 5;
+  .logoWrapper {
+    .logo {
+      cursor: pointer;
+      margin-top: 5rem;
+      overflow: hidden;
+      height: 110px;
+      display: inline-block;
+      margin: 18px 0 0 40px;
+      @include apply-at-sm-md-size {
+        margin-left: 15%;
+      }
+    }
+  }
+  .menuWrapper {
+    position: relative;
+    display: flex;
+    width: 70%;
+    align-items: center;
+    justify-content: space-around;
+    @include apply-at-md-size {
+      border: 1px solid red;
+    }
+    a {
+      color: $color-ultra-white;
+      text-decoration: none;
+    }
+    .active {
+      font-size: 14px;
+      padding: 14px;
+      text-align: center;
+      align-items: center;
+      background-color: $color-pink-paw;
+      border-radius: 10px;
+      border: 1px solid $color-blue-atmosphere;
+      a {
+        color: $color-protanomali;
+        font-weight: bold;
+      }
+    }
+    .dropdown {
+      cursor: pointer;
+      padding: 0 0 0 0;
+      margin: 0 0 0 0;
+    }
+    .dropdownActive {
+      width: 150px;
+      font-size: 14px;
+      padding: 14px;
+      text-align: center;
+      align-items: center;
+      background-color: $color-pink-paw;
+      border-radius: 10px;
+      border: 1px solid $color-blue-atmosphere;
+      a {
+        color: $color-protanomali;
+        font-weight: bold;
+      }
+    }
+    .dropdownPassive {
+      width: 150px;
+      font-size: 14px;
+      padding: 14px;
+      text-align: center;
+      align-items: center;
+      border-radius: 10px;
+      a {
+        color: $color-ultra-white;
+        font-weight: bold;
+      }
+    }
+    .dropdownPassive:hover {
+      width: 150px;
+      font-size: 14px;
+      padding: 14px;
+      text-align: center;
+      align-items: center;
+      background-color: $color-pink-paw;
+      border-radius: 10px;
+      border: 1px solid $color-blue-atmosphere;
+      a {
+        color: $color-protanomali;
+        font-weight: bold;
+      }
+      .dropdownContainer {
+        width: 178px;
+        position: absolute;
+        font-weight: bold;
+        right: 321px;
+        top: 91px;
+        border: 1px solid $color-blue-atmosphere;
+        background-color: $color-pink-paw;
+        border-radius: 0px 0px 10px 10px;
+        .dropdownWrapper {
+          @include directionY;
+          .wrapper {
+            cursor: pointer;
+            .activity {
+              padding: 5%;
+            }
+            .activitylast {
+              padding: 5%;
+            }
+            .activity:hover {
+              // padding: 0 0 0 0;
+              background-color: $color-dark-pink-paw;
+            }
+            .activitylast:hover {
+              // padding: 0 0 0 0;
+              background-color: $color-dark-pink-paw;
+              border-radius: 0px 0px 10px 10px;
+            }
+          }
+        }
+      }
+    }
+    .dropdownWrapper {
+      .dropdown {
+        cursor: pointer;
+        padding: 0 0 0 0;
+        margin: 0 20px 0 20px;
+      }
+    }
+    .dropdownContainer {
+      width: 178px;
+      position: absolute;
+      font-weight: bold;
+      right: 331.5px;
+      // right: 362.4px;
+      // top: 98px;
+      top: 91px;
+      border: 1px solid $color-blue-atmosphere;
+      background-color: $color-pink-paw;
+      border-radius: 0px 0px 10px 10px;
+      .dropdownWrapper {
+        @include directionY;
+        .activity {
+          // padding: 5%;
+          border-top: 1px solid $color-blue-atmosphere
+        }
+        .activitylast {
+          // padding: 5%;
+          border-top: 1px solid $color-blue-atmosphere
+        }
+        .activity:hover {
+          background-color: $color-dark-pink-paw;
+        }
+        .activitylast:hover {
+          background-color: $color-dark-pink-paw;
+          border-radius: 0px 0px 10px 10px;
+        }
+      }
+    }
+  }
+}

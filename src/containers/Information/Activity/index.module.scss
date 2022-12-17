@@ -1,0 +1,128 @@
+@import '../../../styles/base';
+
+.container {
+  @include directionY;
+  overflow-x: hidden;
+  @include body;
+  .wrapper {
+    background-color: $color-ultra-white;
+    .body {
+      width: 90%;
+      @include directionY;
+      @include content-center;
+      margin-top: 12%;
+      .activityInformation {
+        .titleWrapper {
+          // margin-top: 4%;
+          margin: 4% 0 4% 0;
+          p {
+            margin: 0;
+          }
+          .title {
+            font-size: 26px;
+            font-weight: bold;
+          }
+        }
+        .articleWrapper {
+          @include directionX;
+          flex-wrap: wrap;
+          width: 100%;
+          // margin-top: 2%;
+          gap: 3%;
+          .articleCard {
+            border: 1px solid $color-protanomali;
+            @include directionY;
+            max-width: 29.8%;
+            height: 460px;
+            margin-bottom: 15%;
+            align-items: center;
+            padding: 1%;
+            .img {
+              width: 307px;
+              margin-top: 5%;
+            }
+            .article {
+              @include directionY;
+              @include content-center;
+              min-height: 50%;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              width: 90%;
+              margin-top: 14px;
+              .title {
+                text-align: center;
+                font-weight: bold;
+                font-size: 18px;
+                margin: 0;
+              }
+              .subtitle {
+                text-align: center;
+                font-size: 15px;
+                margin: 0;
+              }
+              .date {
+                font-size: 10px;
+                text-align: right;
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
+      .achievementInformation {
+        .titleWrapper {
+          margin: 4% 0 4% 0;
+          p {
+            margin: 0;
+          }
+          .title {
+            font-size: 26px;
+            font-weight: bold;
+          }
+        }
+        .achievementWrapper {
+          @include directionX;
+          flex-wrap: wrap;
+          width: 100%;
+          gap: 5%;
+          .achievementCard {
+            border: 1px solid $color-protanomali;
+            @include directionY;
+            max-width: 29.8%;
+            height: 400px;  
+            margin-bottom: 15%;
+            align-items: center;
+            padding: 1%;
+            .img {
+              width: 307px;
+              margin-top: 5%;
+            }
+            .achievement {
+              width: 90%;
+              @include directionY;
+              @include content-center;
+              min-height: 50%;
+              flex-wrap: wrap;
+              margin-top: 14px;
+              .title {
+                text-align: center;
+                font-weight: bold;
+                font-size: 18px;
+              }
+              .category {
+                text-align: center;
+                font-size: 15px;
+                margin: 0;
+              }
+              .level {
+                font-size: 10px;
+                text-align: center;
+                margin: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
