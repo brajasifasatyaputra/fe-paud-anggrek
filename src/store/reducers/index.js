@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import hellowWorld from "./HelloWorld";
+import mainReducer from "./reducer";
 
 const rootReducer = combineReducers({
-  hellowWorld: hellowWorld,
+  mainReducer: mainReducer,
 });
 
 export default rootReducer;

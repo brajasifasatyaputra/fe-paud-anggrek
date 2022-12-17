@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchGallery } from '../../store/actions'
 import classes from './index.module.scss';
 import Navbar from "../../components/Navbar";
 import BannerRegister from "../../components/Banner";
@@ -8,33 +11,11 @@ import profile from '../../static/data/about';
 import structure from '../../static/images/structure.webp';
 
 const AboutPage = () => {
-	const gallery = [
-		{
-			title : 'Berkunjung ke pos pemadam kebakaran',
-			img : ff
-		},
-		{
-			title : 'Berkunjung ke pos pemadam kebakaran',
-			img : ff
-		},
-		{
-			title : 'Berkunjung ke pos pemadam kebakaran',
-			img : ff
-		},
-		{
-			title : 'Berkunjung ke pos pemadam kebakaran',
-			img : ff
-		},
-		{
-			title : 'Berkunjung ke pos pemadam kebakaran',
-			img : ff
-		},
-		{
-			title : 'Berkunjung ke pos pemadam kebakaran',
-			img : ff
-		},
-	]
-
+  const galleries = useSelector((state) => state.mainReducer.galleries);
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(fetchGallery())
+	},[])
 
 	return (
 		<div className={classes.container}>
@@ -108,12 +89,12 @@ const AboutPage = () => {
 							Gallery Sekolah
 						</div>
 						<div className={classes.content}>
-							{gallery &&
-							gallery.map((data, idx) => {
+							{galleries &&
+							galleries.map((data, idx) => {
 								return (
 									<div className={classes.card} key={idx}>
 										<div className={classes.photoWrapper}>
-											<img src={data.img} alt='gallery' />
+											<img src={data.image} alt='gallery' />
 										</div>
 											<p>{data.title}</p>
 									</div>
