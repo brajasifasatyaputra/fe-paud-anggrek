@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from './index.module.scss';
 import Navbar from "../../../components/Navbar";
 import BannerRegister from '../../../components/Banner';
-
+import Footer from "../../../components/Footer";
 import secretary from '../../../static/images/secretary.webp';
 import headmaster from '../../../static/images/headmaster.webp';
 import treasurer from '../../../static/images/treasurer.webp';
 
 const TeacherInformation = () => {
+	const [open, setOpen] = useState(false);
+	const [input, setInput] = useState({});
+	console.log(input,'><>><><><><>');
+
+	const handleOpen = () => {
+		setOpen(!open);
+	};
+
+	const handleScore = (event) => {
+		const name = event.target.name;
+		const value = event.target.value;
+		setInput(values => ({...values, [name]: value}))
+	};
+
 	const teacher = [
 		{
 			position : 'Sekretaris dan Pendidik',
@@ -108,9 +122,47 @@ const TeacherInformation = () => {
 					</div>
 					<BannerRegister />
 					<div className={classes.scoringContainer}>
-						
+						<div className={classes.title}>Beri Penilaian Pendidik SPS PAUD Anggrek 05</div>
+						<div className={classes.scoring}>
+							<div className={classes.upperSection}>
+								<div className={classes.formScorer}>
+									<div className={classes.name}>
+										<p>Nama :</p>
+										<input name='nama' type='text' onChange={handleScore} />
+									</div>
+									<div className={classes.contact}>
+										<p>Kontak :</p>
+										<input name='kontak' type='text' onChange={handleScore} />
+									</div>
+								</div>
+								<div className={classes.candidatesWrapper}>
+									<p>Penilaian Kepada : (pilih satu)</p>
+									<div className={classes.candidatesScoring}>
+										<button onClick={handleOpen}>Pilih</button>
+										{open ? (
+											<div className={classes.ul}>
+												<p>Ibu Guru</p>
+												<p>Ibu Juariyah</p>
+												<p>Ibu Juariyah</p>
+												<p>Ibu Nunung Nurhayati</p>
+											</div>
+										) : null}
+									</div>
+								</div>
+							</div>
+							<div className={classes.bottomSection}>
+								<div className={classes.testimonialWrapper}>
+									<p>Tuliskan Penilaian atau pesan dan kesan kepada pendidik SPS PAUD Anggrek 05 :</p>
+									<textarea className={classes.txtarea} name='penilaian' type='text' onChange={handleScore} />
+									<div className={classes.btn}>
+										<p className={classes.send}>Kirim Penilaian</p>
+										</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
+					<Footer />
 			</div>
 		</div>
 	);
