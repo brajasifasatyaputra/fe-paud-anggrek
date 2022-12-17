@@ -1,42 +1,45 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { HELLO_WORLD, POST_CONTACT } from "./store/constants/index";
-import { receiveHelloWorld } from "./store/actions/index";
-import { getAllGallery, postContact } from "./domain/API";
+import { 
+  FETCH_ARTICLE,
+  FETCH_GALLERY,
+} from "./store/constants/index";
+import {
+  setArticle,
+  setGallery,
+} from "./store/actions/index";
+import {
+  fetchArticle,
+  fetchGallery,
+} from "./domain/API";
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
-function* helloWorld(action) {
+function* doFetchArticle() {
   try {
-    const fetchData = yield call(getAllGallery);
-    yield put(receiveHelloWorld("hello world saga"));
+    const response = yield call(fetchArticle);
+    if (response) {
+      const { articles } = response.data;
+      const activity = articles.filter((item) => {
+        return item.category.toLowerCase() === 'kegiatan'
+      })
+      const achievment = articles.filter((item) => {
+        return item.category.toLowerCase() === 'prestasi'
+      })
+      yield put(setArticle(activity, achievment))
+    }
   } catch (e) {
-    yield put({ type: "USER_FETCH_FAILED", message: e.message });
+    console.log(e)
+    // yield put({ type: "USER_FETCH_FAILED", message: e.message });
   }
 }
 
-function* submitContact({ value }) {
-  const {
-    name,
-    email,
-    message,
-    subject,
-    phone,
-    resetForm,
-    showSuccessNotif,
-    showErrorNotif,
-  } = value;
+function* doFetchGallery() {
   try {
-    const formValue = {
-      name,
-      email,
-      message,
-      subject,
-      phone,
-    };
-    const response = yield call(postContact, formValue);
-    showSuccessNotif();
-    resetForm();
-  } catch (error) {
-    showErrorNotif();
-    console.log(error);
+    const response = yield call(fetchGallery);
+    if (response) {
+      const { galleries } = response.data;
+      yield put(setGallery(galleries))
+    }
+  } catch (e) {
+    console.log(e)
   }
 }
 
@@ -53,8 +56,9 @@ function* submitContact({ value }) {
   and only the latest one will be run.
 */
 export default function* mySaga() {
-  yield takeLatest(HELLO_WORLD, helloWorld);
-  yield takeLatest(POST_CONTACT, submitContact);
+  yield takeLatest(FETCH_ARTICLE, doFetchArticle);
+  yield takeLatest(FETCH_GALLERY, doFetchGallery);
+  // yield takeLatest(POST_CONTACT, submitContact);
 }
 
 // export default mySaga;

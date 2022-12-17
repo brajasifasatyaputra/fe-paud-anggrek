@@ -13,7 +13,6 @@
       margin-top: 12%;
       .activityInformation {
         .titleWrapper {
-          // margin-top: 4%;
           margin: 4% 0 4% 0;
           p {
             margin: 0;
@@ -27,44 +26,40 @@
           @include directionX;
           flex-wrap: wrap;
           width: 100%;
-          // margin-top: 2%;
-          gap: 3%;
+          gap: 1%;
           .articleCard {
-            border: 1px solid $color-protanomali;
             @include directionY;
-            max-width: 29.8%;
-            height: 460px;
-            margin-bottom: 15%;
+            justify-content: space-between;
+            text-align: center;
+            border: 1px solid $color-protanomali;
+            background-color: $color-white;
+            width: 30%;
             align-items: center;
             padding: 1%;
-            .img {
-              width: 307px;
-              margin-top: 5%;
+            margin: 2% 0;
+            .top {
+              .img {
+                width: 90%;
+              }
+              .article {
+                @include directionY;
+                @include content-center;
+                justify-content: space-between;
+                width: 90%;
+                text-align: center;
+                .title {
+                  font-weight: bold;
+                  font-size: 18px;
+                }
+                .subtitle {
+                  font-size: 15px;
+                }
+              }
             }
-            .article {
-              @include directionY;
-              @include content-center;
-              min-height: 50%;
-              flex-wrap: wrap;
-              justify-content: space-between;
-              width: 90%;
-              margin-top: 14px;
-              .title {
-                text-align: center;
-                font-weight: bold;
-                font-size: 18px;
-                margin: 0;
-              }
-              .subtitle {
-                text-align: center;
-                font-size: 15px;
-                margin: 0;
-              }
-              .date {
-                font-size: 10px;
-                text-align: right;
-                margin: 0;
-              }
+            .date {
+              font-size: 10px;
+              text-align: right;
+              width: 100%;
             }
           }
         }
@@ -81,20 +76,22 @@
           }
         }
         .achievementWrapper {
-          @include directionX;
-          flex-wrap: wrap;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
           width: 100%;
-          gap: 5%;
+        gap: 1%;
           .achievementCard {
             border: 1px solid $color-protanomali;
+            background-color: $color-white;
             @include directionY;
-            max-width: 29.8%;
+            // max-width: 29.8%;
             height: 400px;  
             margin-bottom: 15%;
             align-items: center;
             padding: 1%;
             .img {
-              width: 307px;
+              max-width: 307px;
+              // width: 100%;
               margin-top: 5%;
             }
             .achievement {
