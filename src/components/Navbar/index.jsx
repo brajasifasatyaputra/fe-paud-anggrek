@@ -94,7 +94,7 @@ const Navbar = () => {
           <a className={location.pathname === "/contact" ? `${classes.active}` : ""}>
             <Link className="link" to="/contact">
               <p className={classes.dropdown}>
-                Hubungi Kamu
+                Hubungi Kami
               </p>
             </Link>
           </a>

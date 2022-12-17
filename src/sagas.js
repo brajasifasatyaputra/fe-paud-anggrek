@@ -2,14 +2,17 @@ import { call, put, takeLatest } from "redux-saga/effects";
 import { 
   FETCH_ARTICLE,
   FETCH_GALLERY,
+  FETCH_TESTIMONY,
 } from "./store/constants/index";
 import {
   setArticle,
   setGallery,
+  setTestimony,
 } from "./store/actions/index";
 import {
   fetchArticle,
   fetchGallery,
+  fetchTestimonies,
 } from "./domain/API";
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* doFetchArticle() {
@@ -43,6 +46,18 @@ function* doFetchGallery() {
   }
 }
 
+function* doFetchTestimony() {
+  try {
+    const response = yield call(fetchTestimonies);
+    if (response) {
+      const { testimonies } = response.data;
+      yield put(setTestimony(testimonies))
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 /*
   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
   Allows concurrent fetches of user.
@@ -58,7 +73,7 @@ function* doFetchGallery() {
 export default function* mySaga() {
   yield takeLatest(FETCH_ARTICLE, doFetchArticle);
   yield takeLatest(FETCH_GALLERY, doFetchGallery);
-  // yield takeLatest(POST_CONTACT, submitContact);
+  yield takeLatest(FETCH_TESTIMONY, doFetchTestimony);
 }
 
 // export default mySaga;
