@@ -6,6 +6,8 @@ import {
   SET_ARTICLE,
   FETCH_GALLERY,
   SET_GALLERY,
+  FETCH_TESTIMONY,
+  SET_TESTIMONY,
 } from "../constants/index";
 
 export const requestHelloWorld = () => {
@@ -50,5 +52,18 @@ export const setGallery = (galleries) => {
   return {
     type: SET_GALLERY,
     galleries,
+  }
+}
+
+export const fetchTestimony = () => {
+  return {
+    type: FETCH_TESTIMONY,
+  }
+}
+
+export const setTestimony = (testimonies) => {
+  return {
+    type: SET_TESTIMONY,
+    testimonies,
   }
 }

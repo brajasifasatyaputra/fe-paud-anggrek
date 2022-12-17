@@ -5,6 +5,7 @@ const base_URL = "http://localhost:5000/api";
 const urls = {
   fetchArticle: "/article",
   fetchGallery: "/gallery",
+  fetchTestimonies: "/testimony",
 };
 
 const callAPI = (endpoint, method, headers = {}, params = {}, data = {}) => {
@@ -37,4 +38,8 @@ export const fetchArticle = () => {
 
 export const fetchGallery = () => {
   return callAPI(urls.fetchGallery, "get", {});
+};
+
+export const fetchTestimonies = () => {
+  return callAPI(urls.fetchTestimonies, "get", {});
 };

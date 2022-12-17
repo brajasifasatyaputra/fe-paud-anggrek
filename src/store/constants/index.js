@@ -5,3 +5,5 @@ export const FETCH_ARTICLE = 'FETCH_ARTICLE';
 export const SET_ARTICLE = 'SET_ARTICLE';
 export const FETCH_GALLERY = 'FETCH_GALLERY';
 export const SET_GALLERY = 'SET_GALLERY';
+export const FETCH_TESTIMONY = 'FETCH_TESTIMONY';
+export const SET_TESTIMONY = 'SET_TESTIMONY';

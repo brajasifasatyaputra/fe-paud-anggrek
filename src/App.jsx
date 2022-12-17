@@ -4,6 +4,7 @@ import {
   ActivityInformation,
   TeacherInformation,
   RegistrationInformation,
+  ContactPage
   // PortfolioPage,
   // PortfolioItem,
   // NotFoundPage,
@@ -23,7 +24,7 @@ function App() {
           <Route exact path="/information/activity" component={ActivityInformation} />
           <Route exact path="/information/teacher" component={TeacherInformation} />
           <Route exact path="/information/registration" component={RegistrationInformation} />
-          <Route exact path="/contact" component={HomePage} />
+          <Route exact path="/contact" component={ContactPage} />
           <Route exact path="/login" component={HomePage} />
           {/* <Route exact path="/about" component={AboutPage} />
           <Route exact path="/service" component={ServicePage} />
