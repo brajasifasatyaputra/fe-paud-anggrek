@@ -1,9 +1,12 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import classes from './index.module.scss';
 import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
 
-import { registerStudent } from '../../store/actions';
+import { registerStudent, loginStudent } from '../../store/actions';
 
 import logo from '../../static/icon/logo.webp';
 
@@ -12,7 +15,11 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
   const history = useHistory();
 
   const [isStudent, setIsStudent] = useState(true);
-
+  const [isFailed, setIsFailed] = useState(false);
+  const [errMsg, setErrMsg] = useState('');
+  console.log(errMsg, 'errMsgerrMsg');
+  console.log(isFailed,'isFailed');
+  
   const [formRegister, setFormRegister] = useState({
     nama_lengkap: '',
     nik_anak: '',
@@ -22,7 +29,8 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
 
   const passwordValidation = () => {
     if (formRegister.password !== formRegister.retypePassword) {
-      alert('password tidak sama')
+      // alert('password tidak sama') // belum di handle
+      AlertFailed();
       return false;
     }
     return true;
@@ -35,14 +43,31 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
 
   const onSubmitRegister = (e) => {
     e.preventDefault();
-    
     if (passwordValidation()) {
-      console.log('lolos validasi');
       dispatch(registerStudent(formRegister, () => {
         history.push('/');
         handleClose(false);
+      }, 
+      (error) => {
+        setErrMsg(error);
+        setIsFailed(true);
       }));
     };
+  };
+  const onSubmitLogin = (e) => {
+    e.preventDefault();
+    dispatch(loginStudent(formLogin,
+      (error) => {
+        setErrMsg(error);
+        setIsFailed(true);
+      },
+      () => {
+        history.push('/');
+        handleClose(false);
+        setFormLogin('');
+      },
+      isStudent
+    ));
   };
 
   const register = (e) => {
@@ -69,6 +94,24 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
   const handleXLogin = () => {
     handleClose(false);
     handleChangeModal('')
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsFailed(false);
+      setErrMsg('');  
+    }, 3000)
+  }, [isFailed]);
+
+  const AlertFailed = () => {
+    return (
+      <Stack sx={{ width: '100%' }} spacing={2}>
+        <Alert severity="error">
+          <AlertTitle>Error</AlertTitle>
+          {errMsg}<strong> Try Again</strong>
+        </Alert>
+      </Stack>
+    );
   };
 
   const modalRegister = () => {
@@ -104,6 +147,9 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
             <div>
               <span>Sudah Memiliki Akun ? <strong onClick={handleChangeLogin}>Klik Disini</strong></span>
             </div>
+            {isFailed && AlertFailed()} 
+            {passwordValidation && AlertFailed()}
+            {/* alert belum fix */}
           </div>
       </>
     );
@@ -118,7 +164,7 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
           <div className={classes.border} />
           <p>Login</p>
           <div className={classes.body}>
-            <form className={classes.formLogin}>
+            <form className={classes.formLogin} onSubmit={onSubmitLogin}>
               <input type='text' placeholder='Email'
                 name='email' value={formLogin.email} onChange={login} required
               />
@@ -127,7 +173,7 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
               />
               <div className={classes.btn}>
                 <button className={classes.btnLogin} type='submit'>Login</button>
-                <span className={classes.roleWrapper}>Login sebagai {isStudent ? 'Siswa' : 'Guru'} <strong onClick={() => setIsStudent(!isStudent)}>Klik Disini</strong></span>
+                <span className={classes.roleWrapper}>Login sebagai {isStudent ? 'Guru' : 'Siswa'} <strong onClick={() => setIsStudent(!isStudent)}>Klik Disini</strong></span>
               </div>
             </form>
           </div>
@@ -136,6 +182,8 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
               <strong onClick={handleChangeRegister}> Klik Disini</strong>
             </span>
           </div>
+          {isFailed && AlertFailed()}
+          {/* alert belum fix */}
         </div>
       </>
     )

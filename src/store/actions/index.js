@@ -14,6 +14,8 @@ import {
   SET_ASSESSMENT,
   SEND_ASSESSMENT,
   STUDENT_REGISTER,
+  STUDENT_LOGIN,
+  SET_IS_LOGIN,
 } from "../constants/index";
 
 export const requestHelloWorld = () => {
@@ -115,3 +117,16 @@ export const registerStudent = (data, cbSuccess, cbFailed) => {
   }
 }
 
+export const loginStudent = (studentData, cb, scSuccess, isStudent) => {
+  return {
+    type: STUDENT_LOGIN,
+    studentData, cb, scSuccess, isStudent
+  }
+}
+
+export const isLogin = (value) => {
+  return {
+    type: SET_IS_LOGIN,
+    value
+  }
+}
