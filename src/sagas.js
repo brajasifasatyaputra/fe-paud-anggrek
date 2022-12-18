@@ -9,6 +9,8 @@ import {
   SEND_ASSESSMENT,
   STUDENT_REGISTER,
   STUDENT_LOGIN,
+  PROFILE_FULFILLMENT,
+  UPLOAD_DOCUMENT,
 } from "./store/constants/index";
 import {
   setArticle,
@@ -26,6 +28,8 @@ import {
   sendAssessment,
   studentRegister,
   studentLogin,
+  profileFulfillment,
+  uploadDocument,
 } from "./domain/API";
 import _ from "lodash";
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
@@ -147,6 +151,36 @@ function* loginAccount({ studentData, cb, scSuccess, isStudent }) {
   }
 }
 
+function* doProfileFulfillment({ data, cbSuccess, cbFailed }) {
+  try {
+    const response = yield call(profileFulfillment, data)
+    if (response) {
+      cbSuccess && cbSuccess();
+    }
+  } catch (error) {
+    if (error.response.status === 400) {
+      cbFailed && cbFailed(error.response.data.message);
+    } else {
+      cbFailed && cbFailed('Mohon Maaf Terjadi kesalahan pada Sistem, Silahkan Coba lagi');
+    }
+  }
+}
+
+function* doUploadDocument({ data, cbSuccess, cbFailed }) {
+  try {
+    const response = yield call(uploadDocument, data)
+    if (response) {
+      cbSuccess && cbSuccess();
+    }
+  } catch (error) {
+    if (error.response.status === 400) {
+      cbFailed && cbFailed(error.response.data.message);
+    } else {
+      cbFailed && cbFailed('Mohon Maaf Terjadi kesalahan pada Sistem, Silahkan Coba lagi');
+    }
+  }
+}
+
 /*
   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
   Allows concurrent fetches of user.
@@ -168,6 +202,8 @@ export default function* mySaga() {
   yield takeLatest(SEND_ASSESSMENT, doSendAssessment);
   yield takeLatest(STUDENT_REGISTER, registAccount);
   yield takeLatest(STUDENT_LOGIN, loginAccount);
+  yield takeLatest(PROFILE_FULFILLMENT, doProfileFulfillment);
+  yield takeLatest(UPLOAD_DOCUMENT, doUploadDocument);
 }
 
 // export default mySaga;

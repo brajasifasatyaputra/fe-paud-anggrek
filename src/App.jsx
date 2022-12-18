@@ -4,7 +4,9 @@ import {
   ActivityInformation,
   TeacherInformation,
   RegistrationInformation,
-  ContactPage
+  ContactPage,
+  RegisterFulfillment,
+  RegisterUploadDocument,
   // PortfolioPage,
   // PortfolioItem,
   // NotFoundPage,
@@ -25,7 +27,10 @@ function App() {
           <Route exact path="/information/teacher" component={TeacherInformation} />
           <Route exact path="/information/registration" component={RegistrationInformation} />
           <Route exact path="/contact" component={ContactPage} />
-          {/* <Route exact path="/login" component={HomePage} /> */}
+          <Route exact path="/login" component={HomePage} />
+          <Route exact path="/register/fulfillment" component={RegisterFulfillment} />
+          <Route exact path="/register/upload-document" component={RegisterUploadDocument} />
+          <Route exact path="/register/payment" component={HomePage} />
           {/* <Route exact path="/about" component={AboutPage} />
           <Route exact path="/service" component={ServicePage} />
           <Route exact path="/contact" component={ContactPage} />

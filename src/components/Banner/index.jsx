@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import classes from './index.module.scss';
 import Popup from "../Popup";
+import { useHistory } from "react-router";
 import _ from 'lodash';
 
 export const BannerRegister = () => {
 	const [show, setShow] = useState(false);
   const [nameModal, setNameModal] = useState('');
 	const [isLogin] = useState(!_.isEmpty(localStorage.getItem('access_token')));
+	const history = useHistory();
+
+	const goToRegisterFulfillment = () => {
+		history.push('/register/fulfillment')
+	}
 
 	const toggleModalRegister = () => {
     setShow(!show);
@@ -25,7 +31,7 @@ export const BannerRegister = () => {
 					Daftar Akun
 				</div>
 				:
-				<div className={classes.btn}>
+				<div className={classes.btn} onClick={goToRegisterFulfillment}>
 					Isi Formulir<br/>Pendaftaran
 				</div>
 			}
