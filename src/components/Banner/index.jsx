@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import classes from './index.module.scss';
+import Popup from "../Popup";
 import _ from 'lodash';
 
 export const BannerRegister = () => {
+	const [show, setShow] = useState(false);
+  const [nameModal, setNameModal] = useState('');
 	const [isLogin] = useState(!_.isEmpty(localStorage.getItem('access_token')));
+
+	const toggleModalRegister = () => {
+    setShow(!show);
+    setNameModal('register');
+  };
 
 	return (
 		<div className={classes.container}>
@@ -13,7 +21,7 @@ export const BannerRegister = () => {
 			</div>
 			<div className={classes.btnWrapper}>
 			{!isLogin ?
-				<div className={classes.btn}>
+				<div className={classes.btn} onClick={toggleModalRegister}>
 					Daftar Akun
 				</div>
 				:
@@ -21,6 +29,10 @@ export const BannerRegister = () => {
 					Isi Formulir<br/>Pendaftaran
 				</div>
 			}
+			<Popup show={show} setShow={setShow}
+				nameModal={nameModal} handleClose={setShow} 
+				handleChangeModal={setNameModal}
+			/>
 			</div>
 		</div>
 	);

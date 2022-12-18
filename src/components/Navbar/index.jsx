@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import _ from 'lodash';
 import { Link, useHistory, useLocation } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import Logo from "../../static/icon/logo.webp";
 import useWindowDimensions from "../../utils/useWindowDimensions";
 import classes from "./index.module.scss";
@@ -8,16 +9,22 @@ import Sidebar from "../Sidebar/index";
 import Popup from '../Popup';
 
 const Navbar = () => {
-  const [isLogin] = useState(!_.isEmpty(localStorage.getItem('access_token')));
+  const [isLogin, setIsLogin] = useState(!_.isEmpty(localStorage.getItem('access_token')));
   const [show, setShow] = useState(false);
   const [nameModal, setNameModal] = useState('');
   const history = useHistory();
   const location = useLocation();
+  const isLoginState = useSelector((state) => state.mainReducer.isLogin);
 
   const toggleModalLogin = () => {
     setShow(!show);
     setNameModal('login');
   };
+
+  useEffect(() => {
+    setIsLogin(!_.isEmpty(localStorage.getItem('access_token')));
+  }, [isLoginState])
+
   // const toggleModalRegister = () => {
   //   setShow(!show);
   //   setNameModal('register');
@@ -128,7 +135,6 @@ const Navbar = () => {
                 </p>
               {/* </Link> */}
             </a>
-
           }
           <Popup show={show} setShow={setShow}
             nameModal={nameModal} handleClose={setShow} 

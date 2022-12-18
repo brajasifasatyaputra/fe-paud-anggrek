@@ -2,6 +2,7 @@ import _ from "lodash";
 import request from "../utils/request";
 const base_URL = "http://localhost:5000/api";
 const student_API = `${base_URL}/student`;
+const teacher_API = `${base_URL}/teacher`
 
 const urls = {
   fetchArticle: "/article",
@@ -11,7 +12,8 @@ const urls = {
   fetchAssessment: "/assessment",
   sendAssessment: '/assessment/create',
   registerStudent: `${student_API}/register`,
-
+  loginStudent: `${student_API}/login`,
+  loginTeacher: `${teacher_API}/login`,
 };
 
 const callAPI = (endpoint, method, headers = {}, params = {}, data = {}) => {
@@ -61,6 +63,12 @@ export const fetchAssessment = () => {
 export const sendAssessment = (assessment, id) => {
   return callAPI(`${urls.sendAssessment}/${id.id_guru}`, "post", {}, {}, assessment);
 };
+
 export const studentRegister = (data) => {
   return callAPI(urls.registerStudent, 'post', {}, {}, data)
-}
+};
+
+export const studentLogin = (studentData, isStudent) => {
+  return callAPI(isStudent ? urls.loginStudent : urls.loginTeacher, 'post', {}, {}, studentData)
+};
+

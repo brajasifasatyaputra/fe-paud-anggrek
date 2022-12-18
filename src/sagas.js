@@ -8,6 +8,7 @@ import {
   FETCH_ASSESSMENT,
   SEND_ASSESSMENT,
   STUDENT_REGISTER,
+  STUDENT_LOGIN,
 } from "./store/constants/index";
 import {
   setArticle,
@@ -24,6 +25,7 @@ import {
   fetchAssessment,
   sendAssessment,
   studentRegister,
+  studentLogin,
 } from "./domain/API";
 import _ from "lodash";
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
@@ -130,6 +132,21 @@ function* registAccount({ data, cbSuccess, cbFailed }) {
   }
 }
 
+function* loginAccount({ studentData, cb, scSuccess, isStudent }) {
+  try {
+    const response = yield call(studentLogin, studentData, isStudent);
+    localStorage.setItem('access_token', response?.token);
+    localStorage.setItem('role', response?.role);
+    scSuccess && scSuccess();
+  } catch (error) {
+    if (error.response.status === 401) {
+      cb && cb(error.response.data.message);
+    } else {
+      cb && cb('Mohon Maaf Terjadi kesalahan pada Sistem, Silahkan Coba lagi');
+    }
+  }
+}
+
 /*
   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
   Allows concurrent fetches of user.
@@ -150,6 +167,7 @@ export default function* mySaga() {
   yield takeLatest(FETCH_ASSESSMENT, doFetchAssessments);
   yield takeLatest(SEND_ASSESSMENT, doSendAssessment);
   yield takeLatest(STUDENT_REGISTER, registAccount);
+  yield takeLatest(STUDENT_LOGIN, loginAccount);
 }
 
 // export default mySaga;
