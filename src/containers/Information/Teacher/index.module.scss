@@ -20,8 +20,8 @@
           font-size: 22px;
         }
         .teachers {
-          width: 100%;
           @include directionX;
+          justify-content: space-around;
           flex-wrap: wrap;
           gap: 4%;
           margin-top: 5%;
@@ -72,12 +72,21 @@
         .pontenContainer {
           @include directionY;
           width: 90%;
-          max-height: 400px;
+          padding: 2%;
+          border-radius: 25px;
+          height: 400px;
           align-items: center;
           margin: 2% 0 2% 0;
           background-color: $color-pink-paw-opacity;
           overflow-y: scroll;
           overflow-x: hidden;
+          &::-webkit-scrollbar {
+            width: 4px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background: $color-protanomali;
+            border-radius: 20px;
+          }
           .pontenWrapper {
             width: 100%;
             padding: 2% 1% 2% 1%;
@@ -113,9 +122,6 @@
             }
           }
         }
-        .pontenContainer::-webkit-scrollbar {
-          display: none;
-        }
       }
       .scoringContainer {
         @include directionY;
@@ -148,6 +154,7 @@
                   margin-bottom: 5px;
                 }
                 input {
+                  height: 30px;
                   background-color: $color-pink-paw;
                 }
               }
@@ -158,6 +165,7 @@
                   margin-bottom: 5px;
                 }
                 input {
+                  height: 30px;
                   background-color: $color-pink-paw;
                 }
               }
@@ -167,9 +175,6 @@
                 color: $color-white;
               }
               .candidatesScoring {
-                background-color: $color-pink-paw;
-                border-radius: 12px;
-                color: $color-protanomali;
                 margin-top: 10px;
                 button {
                   border: none;
@@ -194,6 +199,16 @@
                   margin: 0;
                   background-color: $color-white;
                 }
+                .select {
+                  padding-left: 15px;
+                  height: 40px;
+                  margin-bottom: 5%;
+                  width: 100%;
+                  border-radius: 10px;
+                  background-color: $color-pink-paw;
+                  color: $color-protanomali;
+  
+                }
               }
             }
           }
@@ -206,18 +221,23 @@
               color: $color-white;
               font-size: 14px;
               .txtarea {
+                padding: 1.5%;
                 width: 100%;
                 background-color: $color-pink-paw;
                 min-height: 140px;
               }
-              .btn {
+              .buttonWrapper {
                 display: flex;
-                align-content: flex-end;
-                .send {
+                justify-content: flex-end;
+                margin-bottom: 2%;
+                .btn {
+                  // height: 40px;
+                  padding: 0 1%;
+                  border-radius: 10px;
                   background-color: $color-ultra-white;
                   color: $color-protanomali;
-                  padding: 2%;
-                  border-radius: 10px;
+                  .send {
+                  }
                 }
               }
             }
