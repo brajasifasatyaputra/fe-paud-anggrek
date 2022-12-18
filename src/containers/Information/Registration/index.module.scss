@@ -1,5 +1,121 @@
 @import '../../../styles/base';
 
 .container {
-  color: red;
+  @include directionY;
+  overflow-x: hidden;
+  @include body;
+  .wrapper {
+    .body {
+      @include directionY;
+      margin-top: 12%;
+      background-color: $color-ultra-white;
+			align-items: center;
+      .mianTitle {
+        width: 24%;
+				margin-top: 2%;
+				padding: 1%;
+				font-weight: bold;
+				text-align: center;
+				border-radius: 180px;
+        color: $color-ultra-white;
+				background-color: $color-protanomali;
+      }
+      .mainBody {
+        margin-top: 3%;
+        width: 90%;
+        @include directionX;
+        .mainDetail {
+          width: 55%;
+          .costDetail {
+            .title {
+              font-size: 25px;
+              font-weight: bold;
+              margin-bottom: 0;
+            }
+            .notesPrice {
+              font-size: 14 px;
+              margin: 0;
+            }
+          }
+          .priceDetail {
+            .title {
+              font-size: 25px;
+              font-weight: bold;
+              margin-bottom: 0; 
+            }
+            .subtitle {
+              font-weight: bold;
+              font-size: 14 px;
+              margin: 0;
+            }
+          }
+          .groupDetail {
+            .title {
+              font-size: 25px;
+              font-weight: bold;
+              margin-bottom: 0; 
+            }
+            ol {
+              margin-bottom: 0;
+            }
+            .notes {
+              padding-left: 3%;
+              font-size: 12px;
+              margin: 0
+            }
+          }
+        }
+        .registWrapper {
+          @include directionY;
+          align-items: center;
+          justify-content: center;
+          width: 45%;
+          .registration {
+            @include directionY;
+            align-items: center;
+            width: 70%;
+            padding: 4%;
+            background-color: $color-protanomali;
+            border-radius: 18px;
+            color: $color-ultra-white;
+            .invitation {
+              font-size: 25px;
+              font-weight: bold;
+              margin-bottom: 0;
+            }
+            .toggleRegistration {
+              background-color: $color-pink-paw;
+              color: $color-protanomali;
+              padding: 2% 3%;
+              border-radius: 10px;
+              font-weight: bold;
+              margin-bottom: 3%;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .flowWrapperInfo {
+        width: 90%;
+        margin-bottom: 2%;
+        .title {
+          font-size: 25px;
+          font-weight: bold;
+          margin-bottom: 0;
+        }
+        .message {
+          font-size: 12px;
+          margin: 0;
+        }
+        ol {
+          margin-bottom: 0;
+        }
+        .notes {
+          padding-left: 1.5%;
+          font-size: 12px;
+          margin: 0;
+        }
+      }
+    }
+  }
 }
