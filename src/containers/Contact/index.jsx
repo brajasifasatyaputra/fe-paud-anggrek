@@ -69,7 +69,7 @@ const AboutPage = () => {
                 <p>SPS PAUD Anggrek 05</p>
               </div>
               <div>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d432.22089908512936!2d106.90550683925458!3d-6.134274758495632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f59e278c6bf5%3A0xd4f91684d4bf0900!2sRani%20Maharani!5e0!3m2!1sid!2sid!4v1671283027060!5m2!1sid!2sid" width="600" height="600" style={{border: "0"}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d432.22089908512936!2d106.90550683925458!3d-6.134274758495632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f59e278c6bf5%3A0xd4f91684d4bf0900!2sRani%20Maharani!5e0!3m2!1sid!2sid!4v1671283027060!5m2!1sid!2sid" width="600" height="600" style={{border: "0"}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
             </div>
 					</div>

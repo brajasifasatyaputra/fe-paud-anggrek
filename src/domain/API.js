@@ -6,6 +6,9 @@ const urls = {
   fetchArticle: "/article",
   fetchGallery: "/gallery",
   fetchTestimonies: "/testimony",
+  fetchTeacher: "/teacher",
+  fetchAssessment: "/assessment",
+  sendAssessment: '/assessment/create'
 };
 
 const callAPI = (endpoint, method, headers = {}, params = {}, data = {}) => {
@@ -42,4 +45,16 @@ export const fetchGallery = () => {
 
 export const fetchTestimonies = () => {
   return callAPI(urls.fetchTestimonies, "get", {});
+};
+
+export const fetchTeacher = () => {
+  return callAPI(urls.fetchTeacher, "get", {});
+};
+
+export const fetchAssessment = () => {
+  return callAPI(urls.fetchAssessment, "get", {});
+};
+
+export const sendAssessment = (assessment, id) => {
+  return callAPI(`${urls.sendAssessment}/${id.id_guru}`, "post", {}, {}, assessment);
 };

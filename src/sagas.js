@@ -3,17 +3,26 @@ import {
   FETCH_ARTICLE,
   FETCH_GALLERY,
   FETCH_TESTIMONY,
+  FETCH_TEACHER,
+  FETCH_ASSESSMENT,
+  SEND_ASSESSMENT,
 } from "./store/constants/index";
 import {
   setArticle,
   setGallery,
   setTestimony,
+  setTeacher,
+  setAssessment,
 } from "./store/actions/index";
 import {
   fetchArticle,
   fetchGallery,
   fetchTestimonies,
+  fetchTeacher,
+  fetchAssessment,
+  sendAssessment,
 } from "./domain/API";
+import _ from "lodash";
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* doFetchArticle() {
   try {
@@ -58,6 +67,43 @@ function* doFetchTestimony() {
   }
 }
 
+function* doFetchTeacher() {
+  try {
+    const response = yield call(fetchTeacher);
+    if (response) {
+      const { teachers } = response.data;
+      yield put(setTeacher(teachers))
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+function* doFetchAssessments() {
+  try {
+    const response = yield call(fetchAssessment);
+    if (response) {
+      const { assessments } = response.data;
+      yield put(setAssessment(assessments))
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+function* doSendAssessment({ data, cbSuccess, cbFailed }) {
+  try {
+    const assessment = _.omit(data, ['id_guru']);
+    const id_guru = _.pick(data, ['id_guru']);
+    const response = yield call(sendAssessment, assessment, id_guru);
+    if (!_.isEmpty(response)) {
+      cbSuccess && cbSuccess()
+    }
+  } catch (e) {
+    cbFailed && cbFailed();
+  }
+}
+
 /*
   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
   Allows concurrent fetches of user.
@@ -74,6 +120,9 @@ export default function* mySaga() {
   yield takeLatest(FETCH_ARTICLE, doFetchArticle);
   yield takeLatest(FETCH_GALLERY, doFetchGallery);
   yield takeLatest(FETCH_TESTIMONY, doFetchTestimony);
+  yield takeLatest(FETCH_TEACHER, doFetchTeacher);
+  yield takeLatest(FETCH_ASSESSMENT, doFetchAssessments);
+  yield takeLatest(SEND_ASSESSMENT, doSendAssessment);
 }
 
 // export default mySaga;
