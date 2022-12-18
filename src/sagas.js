@@ -100,6 +100,11 @@ function* doSendAssessment({ data, cbSuccess, cbFailed }) {
     const id_guru = _.pick(data, ['id_guru']);
     const response = yield call(sendAssessment, assessment, id_guru);
     if (!_.isEmpty(response)) {
+      const response = yield call(fetchAssessment);
+      if (response) {
+        const { assessments } = response.data;
+        yield put(setAssessment(assessments))
+      }
       cbSuccess && cbSuccess()
     }
   } catch (e) {
