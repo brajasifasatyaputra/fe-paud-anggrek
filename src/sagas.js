@@ -1,4 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
+import { omit } from 'lodash';
 import { 
   FETCH_ARTICLE,
   FETCH_GALLERY,
@@ -6,6 +7,7 @@ import {
   FETCH_TEACHER,
   FETCH_ASSESSMENT,
   SEND_ASSESSMENT,
+  STUDENT_REGISTER,
 } from "./store/constants/index";
 import {
   setArticle,
@@ -21,6 +23,7 @@ import {
   fetchTeacher,
   fetchAssessment,
   sendAssessment,
+  studentRegister,
 } from "./domain/API";
 import _ from "lodash";
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
@@ -104,6 +107,24 @@ function* doSendAssessment({ data, cbSuccess, cbFailed }) {
   }
 }
 
+function* registAccount({ data, cbSuccess, cbFailed }) {
+  try {
+    const dataStudent = omit(data, ['retypePassword']);
+    const newStudent = yield call(studentRegister, dataStudent);
+    if (newStudent?.token && newStudent?.role) {
+      localStorage.setItem('access_token', newStudent?.token);
+      localStorage.setItem('role', newStudent?.role);
+      cbSuccess && cbSuccess();
+    }
+  } catch (error) {
+    if (error.response.status === 400) {
+      cbFailed && cbFailed(error.response.data.message);
+    } else {
+      cbFailed && cbFailed('Mohon Maaf Terjadi kesalahan pada Sistem, Silahkan Coba lagi');
+    }
+  }
+}
+
 /*
   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
   Allows concurrent fetches of user.
@@ -123,6 +144,7 @@ export default function* mySaga() {
   yield takeLatest(FETCH_TEACHER, doFetchTeacher);
   yield takeLatest(FETCH_ASSESSMENT, doFetchAssessments);
   yield takeLatest(SEND_ASSESSMENT, doSendAssessment);
+  yield takeLatest(STUDENT_REGISTER, registAccount);
 }
 
 // export default mySaga;

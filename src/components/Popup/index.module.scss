@@ -1,0 +1,153 @@
+@import '../../styles/base';
+
+.overlayX {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
+  background-color: $color-dark-overlay;
+}
+.popupLogin {
+  position: fixed;
+  top: 10%;
+  right: 35%;
+  width: 340px;
+  height: 450px;
+  border-radius: 10px;
+  z-index: 999999999999999 !important;
+  background-color: $color-white;
+  border: 3px solid $color-protanomali;
+  img {
+    display: flex;
+    @include content-center;
+    padding: 5% 0;
+    width: 30%;
+  }
+  .border {
+    width: 99%;  
+    border: 2px solid $color-protanomali;
+  }
+  p {
+    font-size: 36px;
+    padding-top: 5px;
+    // padding-bottom: 20px;
+    margin-top: 0;
+    margin-left: 38px;
+    margin-bottom: 0;
+  }
+  .body {
+    .formLogin {
+      @include directionY;
+      align-items: center;
+    input {
+      margin-top: 4%;
+      padding-left: 5%;
+      width: 240px;
+      height: 35px;
+      border-radius: 8px;
+      }
+      .btn {
+        @include directionY;
+        width: 82%;
+        margin-top: 6%;
+        margin-bottom: 6%;
+        .btnLogin {
+          width: 100%;
+          height: 35px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          color: $color-white;
+          background-color: $color-brown;
+          border: 1px solid $color-pink-paw;
+          cursor: pointer;
+        }
+        .roleWrapper {
+          margin-left: 0;
+          text-align: left;
+          padding-top: 10px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  span {
+    font-size: 16px;
+    margin-left: 10%;
+    strong {
+      cursor: pointer;
+    }
+  }
+}
+
+.popupRegister {
+  position: fixed;
+  top: 5%;
+  right: 35%;
+  width: 360px;
+  height: 550px;
+  border-radius: 10px;
+  z-index: 999999999999999 !important;
+  background-color: $color-white;
+  border: 3px solid $color-protanomali;
+  img {
+    display: flex;
+    @include content-center;
+    padding: 3% 0;
+    width: 30%;
+  }
+  .border {
+    width: 99%;
+    border: 2px solid $color-protanomali;
+  }
+  p {
+    font-size: 36px;
+    padding-top: 5px;
+    margin-top: 0;
+    margin-left: 38px;
+    margin-bottom: 0;
+  }
+  .body {
+    .formRegister {
+      @include directionY;
+      align-items: center;
+    input {
+      margin-top: 3%;
+      padding-left: 5%;
+      width: 240px;
+      height: 30px;
+      border-radius: 8px;
+      }
+      .btn {
+        display: flex;
+        @include content-center;
+        width: 82%;
+        height: 35px;
+        margin-top: 6%;
+        margin-bottom: 8%;
+        .btnRegister {
+          width: 100%;
+          display: flex;
+          @include content-center;
+          justify-content: center;
+          align-items: center;
+          border-radius: 8px;
+          color: $color-white;
+          background-color: $color-brown;
+          border: 1px solid $color-pink-paw;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  span {
+    font-size: 16px;
+    margin-left: 10%;
+    strong {
+      cursor: pointer;
+    }
+  }
+}

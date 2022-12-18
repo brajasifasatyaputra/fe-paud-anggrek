@@ -9,9 +9,6 @@ import primacy from '../../static/data/superiority';
 // import { useState } from "react";
 
 const HomePage = () => {
-  // const isLogin = true;
-  // const [login, setLogin] = useState(isLogin);
-
   return (
     <div className={classes.container}>
       <div className={classes.navbar}>

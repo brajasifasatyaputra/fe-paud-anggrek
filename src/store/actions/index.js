@@ -13,6 +13,7 @@ import {
   FETCH_ASSESSMENT,
   SET_ASSESSMENT,
   SEND_ASSESSMENT,
+  STUDENT_REGISTER,
 } from "../constants/index";
 
 export const requestHelloWorld = () => {
@@ -107,3 +108,10 @@ export const submitAssessment = (data, cbSuccess, cbFailed) => {
     cbFailed
   }
 }
+export const registerStudent = (data, cbSuccess, cbFailed) => {
+  return {
+    type: STUDENT_REGISTER,
+    data, cbSuccess, cbFailed
+  }
+}
+
