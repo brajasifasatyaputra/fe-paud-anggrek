@@ -1,0 +1,66 @@
+@import '../../../styles/base';
+
+.container {
+  @include directionY;
+  overflow-x: hidden;
+  @include body;
+  .wrapper {
+    background-color: $color-ultra-white;
+    .body {
+      @include directionY;
+      @include content-center;
+      margin-top: 12%;
+      .teacherData {
+        @include directionY;
+        @include content-center;
+        width: 90%;
+        margin-top: 1%;
+        // margin-bottom: 5%;
+        .title {
+          font-weight: bold;
+          font-size: 22px;
+        }
+      }
+    }
+    .form {
+      @include directionY;
+      align-items: center;
+      .formWrapper {
+        @include directionX;
+        align-items: center;
+        padding: 2rem;
+        width: 90%;
+        justify-content: space-around;
+        margin-bottom: 1%;
+        .fileWrapper {
+          @include directionY;
+          text-align: center;
+          align-items: center;
+          .top {
+            img {
+              width: 250px;
+            }
+          }
+        }
+      }
+      .btnWrapper {
+        display: flex;
+        justify-content: flex-end;
+        // justify-self: flex-end;
+        margin-bottom: 2%;
+        padding: 2%;
+        width: 90%;
+        .btn {
+          // height: 40px;
+          padding: 1% 2%;
+          border-radius: 10px;
+          background-color: $color-white;
+          color: $color-protanomali;
+          cursor: pointer;
+          .send {
+          }
+        }
+      }
+    }
+  }
+}

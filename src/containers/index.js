@@ -4,3 +4,5 @@ export { default as ActivityInformation } from './Information/Activity/index';
 export { default as TeacherInformation } from './Information//Teacher/index';
 export { default as RegistrationInformation } from './Information/Registration/index';
 export { default as ContactPage } from './Contact/index';
+export { default as RegisterFulfillment } from './Register/Fulfillment';
+export { default as RegisterUploadDocument } from './Register/UploadDocument';

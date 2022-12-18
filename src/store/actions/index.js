@@ -16,6 +16,8 @@ import {
   STUDENT_REGISTER,
   STUDENT_LOGIN,
   SET_IS_LOGIN,
+  PROFILE_FULFILLMENT,
+  UPLOAD_DOCUMENT,
 } from "../constants/index";
 
 export const requestHelloWorld = () => {
@@ -130,3 +132,20 @@ export const isLogin = (value) => {
     value
   }
 }
+export const profileFulfillment = (data, cbSuccess, cbFailed) => {
+  return {
+    type: PROFILE_FULFILLMENT,
+    data,
+    cbSuccess,
+    cbFailed,
+  }
+}
+
+export const uploadDocument = (data, cbSuccess, cbFailed) => {
+  return {
+    type: UPLOAD_DOCUMENT,
+    data,
+    cbSuccess,
+  }
+}
+

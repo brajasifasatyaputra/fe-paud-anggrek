@@ -1,0 +1,291 @@
+@import '../../../styles/base';
+
+.container {
+  @include directionY;
+  overflow-x: hidden;
+  @include body;
+  .wrapper {
+    background-color: $color-ultra-white;
+    .body {
+      @include directionY;
+      @include content-center;
+      margin-top: 12%;
+      .teacherData {
+        @include directionY;
+        @include content-center;
+        width: 90%;
+        margin-top: 1%;
+        // margin-bottom: 5%;
+        .title {
+          font-weight: bold;
+          font-size: 22px;
+        }
+      }
+    }
+    .form {
+      @include directionY;
+      align-items: center;
+      .studentFormContainer {
+        @include directionX;
+        justify-content: space-between;
+        padding: 2rem;
+        width: 90%;
+        margin-bottom: 5%;
+        .leftSection {
+          width: 65%;
+          .inputColumn {
+            @include directionY;
+            input {
+              width: 100%;
+              margin-top: 1%;
+              height: 30px;
+            }
+            textarea {
+              width: 100%;
+              height: 100px;
+            }
+          }
+          .inputRow {
+            @include directionX;
+            margin-top: 1%;
+            // border: 1px solid red;
+            justify-content: space-between;
+            width: 100%;
+            .left {
+              @include directionY;
+              // border: 1px solid blue;
+              width: 45%;
+              select {
+                // width: 100%;
+                height: 40px;
+              }
+              input {
+                height: 30px;
+                // width: 100%;
+              }
+            }
+            .right {
+              @include directionY;
+              width: 45%;
+              input {
+                height: 30px;
+                // width: 100%;
+              }
+            }
+          }
+          .inputThreeRow {
+            @include directionX;
+            margin-top: 1%;
+            // border: 1px solid red;
+            justify-content: space-between;
+            .left {
+              @include directionY;
+              // border: 1px solid blue;
+              width: 30%;
+              select {
+                // width: 100%;
+                height: 40px;
+              }
+              input {
+                height: 30px;
+                // width: 100%;
+              }
+            }
+            .mid {
+              @include directionY;
+              width: 30%;
+              input {
+                height: 30px;
+                // width: 100%;
+              }
+            }
+            .right {
+              @include directionY;
+              width: 30%;
+              input {
+                height: 30px;
+                // width: 100%;
+              }
+            }
+          }
+        }
+        .rightSection {
+          border: 1px solid $color-protanomali;
+          width: 30%;
+          @include directionY;
+          justify-content: center;
+          align-items: center;
+          img {
+            width: 90%;
+          }
+        }
+      }
+      .fatherFormContainer {
+        // @include directionX;
+        // justify-content: space-between;
+        padding: 2rem;
+        width: 90%;
+        margin-bottom: 5%;
+        .inputRow {
+          @include directionX;
+          margin-top: 1%;
+          // border: 1px solid red;
+          justify-content: space-between;
+          width: 100%;
+          .left {
+            @include directionY;
+            // border: 1px solid blue;
+            width: 45%;
+            select {
+              // width: 100%;
+              height: 40px;
+            }
+            input {
+              height: 30px;
+              // width: 100%;
+            }
+          }
+          .right {
+            @include directionY;
+            width: 45%;
+            input {
+              height: 30px;
+              // width: 100%;
+            }
+          }
+        }
+        .inputThreeRow {
+          @include directionX;
+          margin-top: 1%;
+          // border: 1px solid red;
+          justify-content: space-between;
+          .left {
+            @include directionY;
+            // border: 1px solid blue;
+            width: 30%;
+            select {
+              // width: 100%;
+              height: 40px;
+            }
+            input {
+              height: 30px;
+              // width: 100%;
+            }
+          }
+          .mid {
+            @include directionY;
+            width: 30%;
+            input {
+              height: 30px;
+              // width: 100%;
+            }
+          }
+          .right {
+            @include directionY;
+            width: 30%;
+            input {
+              height: 30px;
+              // width: 100%;
+            }
+            select {
+              // width: 100%;
+              height: 40px;
+            }
+          }
+        }
+      }
+      .motherFormContainer {
+        // @include directionX;
+        // justify-content: space-between;
+        padding: 2rem;
+        width: 90%;
+        margin-bottom: 5%;
+        .inputRow {
+          @include directionX;
+          margin-top: 1%;
+          // border: 1px solid red;
+          justify-content: space-between;
+          width: 100%;
+          .left {
+            @include directionY;
+            // border: 1px solid blue;
+            width: 45%;
+            select {
+              // width: 100%;
+              height: 40px;
+            }
+            input {
+              height: 30px;
+              // width: 100%;
+            }
+          }
+          .right {
+            @include directionY;
+            width: 45%;
+            input {
+              height: 30px;
+              // width: 100%;
+            }
+          }
+        }
+        .inputThreeRow {
+          @include directionX;
+          margin-top: 1%;
+          // border: 1px solid red;
+          justify-content: space-between;
+          .left {
+            @include directionY;
+            // border: 1px solid blue;
+            width: 30%;
+            select {
+              // width: 100%;
+              height: 40px;
+            }
+            input {
+              height: 30px;
+              // width: 100%;
+            }
+          }
+          .mid {
+            @include directionY;
+            width: 30%;
+            input {
+              height: 30px;
+              // width: 100%;
+            }
+          }
+          .right {
+            @include directionY;
+            width: 30%;
+            input {
+              height: 30px;
+              // width: 100%;
+            }
+            select {
+              // width: 100%;
+              height: 40px;
+            }
+          }
+        }
+      }
+      .btnWrapper {
+        display: flex;
+        justify-content: flex-end;
+        // justify-self: flex-end;
+        margin-bottom: 2%;
+        padding: 2%;
+        width: 90%;
+        .btn {
+          // height: 40px;
+          padding: 1% 2%;
+          border-radius: 10px;
+          background-color: $color-white;
+          color: $color-protanomali;
+          cursor: pointer;
+          .send {
+          }
+        }
+      }
+    }
+  }
+}

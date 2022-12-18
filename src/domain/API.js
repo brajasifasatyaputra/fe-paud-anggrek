@@ -14,6 +14,8 @@ const urls = {
   registerStudent: `${student_API}/register`,
   loginStudent: `${student_API}/login`,
   loginTeacher: `${teacher_API}/login`,
+  profileFulfillment: `/student/profile-fulfillment`,
+  uploadDocument: '/student/upload-docs',
 };
 
 const callAPI = (endpoint, method, headers = {}, params = {}, data = {}) => {
@@ -72,3 +74,9 @@ export const studentLogin = (studentData, isStudent) => {
   return callAPI(isStudent ? urls.loginStudent : urls.loginTeacher, 'post', {}, {}, studentData)
 };
 
+export const profileFulfillment = (data) => {
+  return callAPI(urls.profileFulfillment, 'post', {}, {}, data)
+}
+export const uploadDocument = (data) => {
+  return callAPI(urls.uploadDocument, 'post', {}, {}, data)
+}
