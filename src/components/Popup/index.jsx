@@ -30,7 +30,8 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
   const passwordValidation = () => {
     if (formRegister.password !== formRegister.retypePassword) {
       // alert('password tidak sama') // belum di handle
-      AlertFailed();
+      setIsFailed(true);
+      setErrMsg('Password Tidak Sama')
       return false;
     }
     return true;
@@ -148,7 +149,6 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
               <span>Sudah Memiliki Akun ? <strong onClick={handleChangeLogin}>Klik Disini</strong></span>
             </div>
             {isFailed && AlertFailed()} 
-            {passwordValidation && AlertFailed()}
             {/* alert belum fix */}
           </div>
       </>
