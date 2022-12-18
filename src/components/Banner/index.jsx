@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from './index.module.scss';
+import _ from 'lodash';
 
 export const BannerRegister = () => {
-	const isLogin = true;
+	const [isLogin] = useState(!_.isEmpty(localStorage.getItem('access_token')));
 
 	return (
 		<div className={classes.container}>
@@ -11,7 +12,7 @@ export const BannerRegister = () => {
 				<p className={classes.subtitle}>Untuk melakukan pendaftaran silahkan buat akun dulu yaa...</p>
 			</div>
 			<div className={classes.btnWrapper}>
-			{isLogin ?
+			{!isLogin ?
 				<div className={classes.btn}>
 					Daftar Akun
 				</div>

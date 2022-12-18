@@ -1,14 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import _ from 'lodash';
 import { Link, useHistory, useLocation } from "react-router-dom";
-// import Logo from "../../static/images/logo.webp";
 import Logo from "../../static/icon/logo.webp";
 import useWindowDimensions from "../../utils/useWindowDimensions";
 import classes from "./index.module.scss";
 import Sidebar from "../Sidebar/index";
+import Popup from '../Popup';
 
 const Navbar = () => {
+  const [isLogin] = useState(!_.isEmpty(localStorage.getItem('access_token')));
+  const [show, setShow] = useState(false);
+  const [nameModal, setNameModal] = useState('');
   const history = useHistory();
   const location = useLocation();
+
+  const toggleModalLogin = () => {
+    setShow(!show);
+    setNameModal('login');
+  };
+  // const toggleModalRegister = () => {
+  //   setShow(!show);
+  //   setNameModal('register');
+  // };
+
   const goToHome = () => {
     history.push("/");
   };
@@ -98,16 +112,31 @@ const Navbar = () => {
               </p>
             </Link>
           </a>
-          <a className={location.pathname === "/login" ? `${classes.active}` : ""}>
-            <Link className="link" to="/login">
-              <p className={classes.dropdown}>
-                Login
-              </p>
-            </Link>
-          </a>
+          {isLogin ? 
+            <a className={location.pathname === "/profile" ? `${classes.active}` : ""}>
+              <Link className="link" to="/profile">
+                <p className={classes.dropdown}>
+                  Profile
+                </p>
+              </Link>
+            </a>
+            :
+            <a className={location.pathname === "/login" ? `${classes.active}` : ""}>
+              {/* <Link className="link" to="/login"> */}
+                <p className={classes.dropdown} onClick={toggleModalLogin}>
+                  Login
+                </p>
+              {/* </Link> */}
+            </a>
+
+          }
+          <Popup show={show} setShow={setShow}
+            nameModal={nameModal} handleClose={setShow} 
+            handleChangeModal={setNameModal}
+          />
         </div>
       ) : (
-        <Sidebar />
+        <Sidebar /> // belum di handle
       )}
     </div>
   );
