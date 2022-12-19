@@ -7,8 +7,7 @@
   .wrapper {
     @include directionY;
     align-items: center;
-    .jumbptron {
-      border: 1px solid red;
+    .jumbotron {
       margin-top: 13%;
       width: 40%;
     }
@@ -19,12 +18,11 @@
       font-weight: bold;
       text-align: center;
       border-radius: 180px;
-      color: $color-pink-paw;
+      color: $color-ultra-white;
       background-color: $color-protanomali;
     }
     .body {
       width: 100%;
-      border: 1px solid red;
       @include directionY;
       margin: 5% 0;
       .biodataWrapper {
@@ -32,43 +30,192 @@
         @include content-center;
         background-color: $color-protanomali;
         border-radius: 20px;
-        border: 1px solid blue;
         .title {
+          color: $color-ultra-white;
           text-align: center;
+          font-weight: bold;
+          font-size: 18px;
+          padding-top: 2%;
         }
         .wrapper {
           width: 90%;
-          border: 1px solid blue;
           @include content-center;
           @include directionX;
           .biodata {
             width: 50%;
             margin-bottom: 3%;
-            border: 1px solid red;
             .label {
               color: $color-ultra-white;
+              margin-bottom: 2px;
+              font-weight: bold;
+              font-size: 14px;
             }
             .name {
+              background-color: $color-grey;
               border: 1px solid $color-protanomali;
+              margin-bottom: 15px;
+              padding: 1% 2%;
+              font-size: 12px;
+              border-radius: 5px;
             }
           }
           .document {
             width: 50%;
-            border: 1px solid red;
+            .wrapper {
+              @include directionY;
+              width: 80%;
+              .statusTitle {
+                color: $color-ultra-white;
+                font-weight: bold;
+              }
+              .img {
+                max-width: 50%;
+                padding: 3% 0;
+              }
+              .status {
+                text-align: center;
+                width: 45%;
+                padding: 1% 0;
+                background-color: $color-protanomali-overlay;
+                border-radius: 10px;
+                color: $color-ultra-white;
+              }
+              .sertification {
+                color: $color-ultra-white;
+                text-align: center;
+                width: 45%;
+                padding: 1% 0;
+                background-color: $color-protanomali-overlay;
+                border-radius: 10px;
+              }
+            }
           }
         }
       }
       .parentBiodataWrapper {
         width: 90%;
-        border: 1px solid blue;
         @include directionY;
         @include content-center;
         .wrapper {
-          width: 98%;
-          border: 1px solid red;
-          @include directionX;
+          @include directionY;
+          background-color: $color-grey;
+          border-radius: 20px;
+          margin-top: 5%;
+          .title {
+            padding-top: 2%;
+            margin-bottom: 0;
+            font-weight: bold;
+            font-size: 20px;
+          }
+          .mainContent {
+            width: 100%;
+            @include content-center;
+            justify-content: space-between;
+            @include directionX;
+            .biodataFather {
+              width: 40%;
+              margin-left: 5%;
+              padding: 3% 0;
+              .label {
+                font-weight: bold;
+                color: $color-black;
+                margin-bottom: 2px;
+                font-size: 14px;
+              }
+              .name {
+                background-color: $color-protanomali;
+                color: $color-ultra-white;
+                margin-bottom: 15px;
+                padding: 1% 2%;
+                font-size: 12px;
+                border-radius: 5px;
+              }
+            }
+            .biodataMother {
+            width: 40%;
+            padding: 3% 0;
+            margin-right: 5%;
+            .label {
+              color: $color-black;
+              margin-bottom: 2px;
+              font-weight: bold;
+              font-size: 14px;
+            }
+            .name {
+              background-color: $color-protanomali;
+              color: $color-ultra-white;
+              margin-bottom: 15px;
+              padding: 1% 2%;
+              font-size: 12px;
+              border-radius: 5px;
+            }
+          }
+          }
+        }
+      }
+      .testimoniContainer {
+        width: 100%;
+        .testimoni {
+          @include directionY;
           @include content-center;
-          justify-content: space-between;
+          width: 90%;
+          border-radius: 20px;
+          background-color: $color-protanomali;
+          .inputData {
+            @include directionY;
+            // @include content-center;
+            .input {
+              @include directionY;
+              .upper {
+                width: 80%;
+                @include directionX;
+                justify-content: space-around;
+                margin-bottom: 3%;
+                padding-top: 3%;
+                @include content-center;
+                .name {
+                  @include directionY;
+                }
+                label {
+                  color: $color-ultra-white;
+                  padding-bottom: 1%;
+                }
+                input {
+                  border-radius: 10px;
+                  background-color: $color-pink-paw;
+                }
+                .contact {
+                @include directionY;
+                label {
+                  color: $color-ultra-white;
+                  padding-bottom: 1%;
+                }
+                input {
+                  border-radius: 10px;
+                  background-color: $color-pink-paw;
+                }
+                }
+              }
+              .bottom {
+                @include content-center;
+                width: 60%;
+                padding-bottom: 3%;
+                .contact {
+                  @include directionY;
+                  label {
+                    color: $color-ultra-white;
+                    padding-bottom: 1%;
+                  }
+                  input {
+                    height: 100px;
+                    padding-left: 1%;
+                    border-radius: 10px;
+                    background-color: $color-pink-paw;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
