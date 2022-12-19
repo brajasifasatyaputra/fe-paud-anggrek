@@ -142,7 +142,7 @@ const TeacherInformation = () => {
 											<textarea value={input.message} className={classes.txtarea} name='message' type='text' onChange={handleScore} />
 											<div className={classes.buttonWrapper}>
 												<button type="submit" className={classes.btn}>
-													<p className={classes.send}>Kirim Penilaian</p>
+													Kirim Penilaian
 												</button>
 											</div>
 										</div>
