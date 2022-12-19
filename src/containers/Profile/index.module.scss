@@ -57,6 +57,7 @@
               padding: 1% 2%;
               font-size: 12px;
               border-radius: 5px;
+              min-height: 32px;
             }
           }
           .document {
@@ -92,6 +93,19 @@
           }
         }
       }
+      .btnUpload {
+        @include directionY;
+        @include content-center;
+        text-align: center;
+        width: 20%;
+        padding: 6px 0;
+        border: 2px solid $color-protanomali;
+        margin-top: 4%;
+        background-color: $color-protanomali-overlay;
+        border-radius: 12px;
+        color: $color-protanomali;
+        cursor: pointer;
+      }
       .parentBiodataWrapper {
         width: 90%;
         @include directionY;
@@ -100,7 +114,7 @@
           @include directionY;
           background-color: $color-grey;
           border-radius: 20px;
-          margin-top: 5%;
+          margin-top: 4%;
           .title {
             padding-top: 2%;
             margin-bottom: 0;
@@ -129,6 +143,7 @@
                 padding: 1% 2%;
                 font-size: 12px;
                 border-radius: 5px;
+                min-height: 32px;
               }
             }
             .biodataMother {
@@ -148,10 +163,25 @@
               padding: 1% 2%;
               font-size: 12px;
               border-radius: 5px;
+              min-height: 32px;
             }
           }
           }
         }
+      }
+      .banner {
+        width: 100%;
+        margin: 5% 0;
+        height: 80px;
+        display: flex;
+        background-color: $color-pink-paw;
+          p {
+            padding-top: 20px;
+            text-align: left;
+            font-size: 26px;
+            font-weight: bold;
+            margin: 0 0 0 10%;
+          }
       }
       .testimoniContainer {
         width: 100%;
@@ -163,7 +193,6 @@
           background-color: $color-protanomali;
           .inputData {
             @include directionY;
-            // @include content-center;
             .input {
               @include directionY;
               .upper {
@@ -182,18 +211,8 @@
                 }
                 input {
                   border-radius: 10px;
+                  padding-left: 3%;
                   background-color: $color-pink-paw;
-                }
-                .contact {
-                @include directionY;
-                label {
-                  color: $color-ultra-white;
-                  padding-bottom: 1%;
-                }
-                input {
-                  border-radius: 10px;
-                  background-color: $color-pink-paw;
-                }
                 }
               }
               .bottom {
@@ -212,6 +231,16 @@
                     border-radius: 10px;
                     background-color: $color-pink-paw;
                   }
+                }
+                .btnSend {
+                  float: right;
+                  background-color: $color-ultra-white;
+                  width: 20%;
+                  cursor: pointer;
+                  padding: 1%;
+                  margin-top: 2%;
+                  border-radius: 10px;
+                  color: $color-protanomali;
                 }
               }
             }

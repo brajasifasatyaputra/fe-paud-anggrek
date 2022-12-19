@@ -15,6 +15,7 @@ const Navbar = () => {
   const history = useHistory();
   const location = useLocation();
   const isLoginState = useSelector((state) => state.mainReducer.isLogin);
+  console.log(isLogin, 'isLogin');
 
   const toggleModalLogin = () => {
     setShow(!show);
@@ -24,11 +25,6 @@ const Navbar = () => {
   useEffect(() => {
     setIsLogin(!_.isEmpty(localStorage.getItem('access_token')));
   }, [isLoginState])
-
-  // const toggleModalRegister = () => {
-  //   setShow(!show);
-  //   setNameModal('register');
-  // };
 
   const goToHome = () => {
     history.push("/");
@@ -84,7 +80,6 @@ const Navbar = () => {
       <div className={classes.logoWrapper}>
         <img className={classes.logo} src={Logo} alt='logo' onClick={goToHome} />
       </div>
-      {width === "lg" ? (
         <div className={classes.menuWrapper}>
           <a className={location.pathname === "/" ? `${classes.active}` : ""}>
             <Link className="link" to="/">
@@ -137,9 +132,6 @@ const Navbar = () => {
             handleChangeModal={setNameModal}
           />
         </div>
-      ) : (
-        <Sidebar /> // belum di handle
-      )}
     </div>
   );
 };
