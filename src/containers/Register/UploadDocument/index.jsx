@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import _ from 'lodash';
 import { useDispatch, useSelector } from "react-redux";
-import { Alert, Paper } from '@mui/material';
+import {
+	Alert,
+	Paper,
+	Button,
+	DialogActions,
+	Dialog,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
+} from '@mui/material';
 import { useHistory } from "react-router";
-
 import { uploadDocument } from "../../../store/actions";
 
 import classes from './index.module.scss';
@@ -23,15 +31,14 @@ const UploadDocument = () => {
   const assessments = useSelector((state) => state.mainReducer.assessments);
 	const [isSuccess, setIsSuccess] = useState(false);
 	const [isFailed, setIsFailed] = useState(false);
-	console.log(isFailed, '<<< isFailed');
+	const [paymentCode, setPaymentCode] = useState('');
+	
 	useEffect(() => {
-		// dispatch(fetchTeacher());
-		// dispatch(fetchAssessment());
 	},[])
 
 	useEffect(() => {
 		setTimeout(() => {
-			setIsSuccess(false);
+			// setIsSuccess(false);
 			setIsFailed(false)
 		},3000)
 	},[isSuccess, isFailed])
@@ -71,14 +78,44 @@ const UploadDocument = () => {
 		dispatch(
 			uploadDocument(
 				formData,
-				() => {
+				(response) => {
 					setInput({});
-					history.push('/register/payment');
+					setPaymentCode(response)
+					setIsSuccess(true);
+					// history.push('/register/payment');
 				},
 				() => {
 					setIsFailed(true);
 				}
 			)
+		)
+	}
+
+	const popupModal = () => {
+		return (
+			<div>
+				<Dialog
+					open={isSuccess}
+					onClose={() => history.push('/')}
+					aria-labelledby="alert-dialog-title"
+					aria-describedby="alert-dialog-description"
+				>
+					<DialogTitle id="alert-dialog-title">
+						Anda Akan Lanjut ke Halaman Upload Bukti Pembayaran
+					</DialogTitle>
+					<DialogContent>
+						<DialogContentText id="alert-dialog-description">
+							Kode Pembayaran Anda {paymentCode}
+						</DialogContentText>
+					</DialogContent>
+					<DialogActions>
+						<Button onClick={() => history.push('/register/payment')}>Lanjut</Button>
+						<Button onClick={() => history.push('/')} autoFocus>
+							Kembali ke Beranda
+						</Button>
+					</DialogActions>
+				</Dialog>
+			</div>
 		)
 	}
 
@@ -126,6 +163,7 @@ const UploadDocument = () => {
 						</button>
 					</div>
 				</form>
+				{isSuccess && popupModal()}
 				<Footer />
 			</div>
 		</div>

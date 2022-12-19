@@ -18,6 +18,9 @@ import {
   SET_IS_LOGIN,
   PROFILE_FULFILLMENT,
   UPLOAD_DOCUMENT,
+  PAYMENT_FULFILLMENT,
+  FETCH_STUDENT,
+  SET_STUDENT,
 } from "../constants/index";
 
 export const requestHelloWorld = () => {
@@ -149,3 +152,24 @@ export const uploadDocument = (data, cbSuccess, cbFailed) => {
   }
 }
 
+export const paymentFulfillment = (data, cbSuccess, cbFailed) => {
+  return {
+    type: PAYMENT_FULFILLMENT,
+    data,
+    cbSuccess,
+    cbFailed,
+  }
+}
+
+export const fetchStudent = () => {
+  return {
+    type: FETCH_STUDENT,
+  }
+}
+
+export const setStudent = (students) => {
+  return {
+    type: SET_STUDENT,
+    students,
+  }
+}
