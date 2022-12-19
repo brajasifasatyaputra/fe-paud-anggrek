@@ -26,6 +26,7 @@ import {
   SET_STUDENT_PROFILE,
   GET_PROFILE_TEACHER,
   SET_TEACHER_PROFILE,
+  POST_TESTIMONY
 } from "../constants/index";
 
 export const requestHelloWorld = () => {
@@ -212,5 +213,13 @@ export const setTeacherProfile = (teacher) => {
   return {
     type: SET_TEACHER_PROFILE,
     teacher,
+  }
+}
+
+export const postTestimony = (data, cbSuccess, cbFailed) => {
+  console.log(data, 'action');
+  return {
+    type : POST_TESTIMONY,
+    data, cbSuccess, cbFailed
   }
 }

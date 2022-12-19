@@ -20,7 +20,8 @@ const urls = {
   fetchStudent: '/student',
   uploadCertificate: '/teacher/upload-certificate',
   getProfileStudent: '/student/get-profile',
-  getProfileTeacher: '/teacher/get-profile'
+  getProfileTeacher: '/teacher/get-profile',
+  postTestimony: '/testimony/create'
 };
 
 const callAPI = (endpoint, method, headers = {}, params = {}, data = {}) => {
@@ -102,4 +103,9 @@ export const getProfileStudent = () => {
 
 export const getProfileTeacher = () => {
   return callAPI(urls.getProfileTeacher, 'get', {})
+}
+
+export const postTestimony = (data) => {
+  console.log(data, 'API');
+  return callAPI(urls.postTestimony, 'post', {}, {}, data);
 }

@@ -29,7 +29,7 @@
     align-items: center;
     justify-content: space-around;
     @include apply-at-md-size {
-      border: 1px solid red;
+      // border: 1px solid red;
     }
     a {
       color: $color-ultra-white;
