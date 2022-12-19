@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import classes from './index.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStudentProfile } from '../../store/actions';
+import { getStudentProfile, getTeacherProfile } from '../../store/actions';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import jumbotron from '../../static/images/jumbotron.webp';
@@ -12,7 +12,14 @@ const Profile = () => {
   console.log(student, 'student');
 
   useEffect(() => {
-    dispatch(getStudentProfile());
+    const role = localStorage.getItem('role');
+    console.log(role, '<<< role')
+    if (role === '2') {
+      dispatch(getStudentProfile());
+    } else {
+      console.log('masuk else')
+      dispatch(getTeacherProfile())
+    }
   }, [])
   
   return (
