@@ -60,6 +60,43 @@ const Profile = () => {
               </div>
             </div>
           </div>
+          <div className={classes.parentBiodataWrapper}>
+            <p className={classes.title}>Data Orang Tua/Wali Siswa/i</p>
+            <div className={classes.wrapper}>
+              <div className={classes.biodataFather}>
+                <p className={classes.label}>Nama Ayah</p>
+                <div className={classes.name}>Nama</div>
+                <p className={classes.label}>No. Telpon</p>
+                <div className={classes.name}>Nama</div>
+                <p className={classes.label}>Jenis Kelamin</p>  
+                <div className={classes.name}>Nama</div>
+                <p className={classes.label}>Tempat, Tanggal Lahirh</p>
+                <div className={classes.name}>Nama</div>
+                <p className={classes.label}>No. KTP Ayah</p>
+                <div className={classes.name}>Nama</div>
+                <p className={classes.label}>Pekerjaan Ayah</p>
+                <div className={classes.name}>Nama</div>
+                <p className={classes.label}>Alamat</p>
+                <div className={classes.name}>Nama</div>
+              </div>
+              <div className={classes.biodataMother}>
+                <p className={classes.label}>Nama Ibu</p>
+                <div className={classes.name}>Nama</div>
+                <p className={classes.label}>No. Telpon</p>
+                <div className={classes.name}>Nama</div>
+                <p className={classes.label}>Jenis Kelamin</p>
+                <div className={classes.name}>Nama</div>
+                <p className={classes.label}>Tempat, Tanggal Lahir</p>
+                <div className={classes.name}>Nama</div>
+                <p className={classes.label}>No. KTP Ibu</p>
+                <div className={classes.name}>Nama</div>
+                <p className={classes.label}>Pekerjaan Ibu</p>
+                <div className={classes.name}>Nama</div>
+                <p className={classes.label}>Alamat</p>
+                <div className={classes.name}>Nama</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Footer />

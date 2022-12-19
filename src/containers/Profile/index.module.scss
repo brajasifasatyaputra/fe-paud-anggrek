@@ -58,6 +58,19 @@
           }
         }
       }
+      .parentBiodataWrapper {
+        width: 90%;
+        border: 1px solid blue;
+        @include directionY;
+        @include content-center;
+        .wrapper {
+          width: 98%;
+          border: 1px solid red;
+          @include directionX;
+          @include content-center;
+          justify-content: space-between;
+        }
+      }
     }
   }
 }
