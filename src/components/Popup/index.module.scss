@@ -29,6 +29,12 @@
     width: 99%;  
     border: 2px solid $color-protanomali;
   }
+  .alertMsg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
   p {
     font-size: 36px;
     padding-top: 5px;
@@ -93,6 +99,12 @@
   z-index: 999999999999999 !important;
   background-color: $color-white;
   border: 3px solid $color-protanomali;
+  .alertMsg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+  }
   img {
     display: flex;
     @include content-center;

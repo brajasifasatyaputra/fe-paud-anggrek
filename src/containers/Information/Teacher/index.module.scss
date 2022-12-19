@@ -9,7 +9,7 @@
     .body {
       @include directionY;
       @include content-center;
-      margin-top: 12%;
+      margin-top: 15%;
       .teacherData {
         width: 90%;
         @include directionY;
@@ -24,9 +24,10 @@
           justify-content: space-around;
           flex-wrap: wrap;
           gap: 4%;
-          margin-top: 5%;
+          margin-top: 2%;
           .teacherCard {
             @include directionY;
+            margin-top: 3%;
             align-items: center;
             max-width: 30%;
             align-items: center;
@@ -154,23 +155,27 @@
                   margin-bottom: 5px;
                 }
                 input {
+                  border-radius: 10px;
                   height: 30px;
                   background-color: $color-pink-paw;
                 }
               }
               .contact {
+                margin-top: 5%;
                 color: $color-white;
                 background-color: $color-protanomali;
                 p {
                   margin-bottom: 5px;
                 }
                 input {
+                  border-radius: 10px;
                   height: 30px;
                   background-color: $color-pink-paw;
                 }
               }
             }
             .candidatesWrapper {
+              margin-top: 2%;
               p {
                 color: $color-white;
               }
@@ -221,6 +226,7 @@
               color: $color-white;
               font-size: 14px;
               .txtarea {
+                border-radius: 10px;
                 padding: 1.5%;
                 width: 100%;
                 background-color: $color-pink-paw;
@@ -229,9 +235,12 @@
               .buttonWrapper {
                 display: flex;
                 justify-content: flex-end;
+                align-items: center;
                 margin-bottom: 2%;
+
                 .btn {
-                  padding: 0 1%;
+                  min-height: 50px;
+                  padding-top: 2%;
                   border-radius: 10px;
                   background-color: $color-ultra-white;
                   color: $color-protanomali;

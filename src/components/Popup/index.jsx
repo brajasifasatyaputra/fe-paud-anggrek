@@ -109,12 +109,14 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
 
   const AlertFailed = () => {
     return (
-      <Stack sx={{ width: '100%' }} spacing={2}>
+      <div className={classes.alertMsg}>
         <Alert severity="error">
           <AlertTitle>Error</AlertTitle>
           {errMsg}<strong> Try Again</strong>
         </Alert>
-      </Stack>
+      </div>
+      // <Stack sx={{ width: '100%' }} spacing={1}>
+      // </Stack>
     );
   };
 
@@ -126,6 +128,7 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
           <img src={logo} alt='logo' />
           <div className={classes.border} />
             <p>Daftar Akun</p>
+            {isFailed && AlertFailed()} 
             <div className={classes.body}>
               <form className={classes.formRegister} onSubmit={onSubmitRegister}>
                 <input type='text' placeholder='Nama Lengkap' 
@@ -151,7 +154,7 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
             <div>
               <span>Sudah Memiliki Akun ? <strong onClick={handleChangeLogin}>Klik Disini</strong></span>
             </div>
-            {isFailed && AlertFailed()} 
+            {/* {isFailed && AlertFailed()}  */}
             {/* alert belum fix */}
           </div>
       </>
