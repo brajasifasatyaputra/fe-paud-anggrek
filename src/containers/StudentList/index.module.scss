@@ -1,4 +1,5 @@
 @import '../../styles/base';
+// @import "~@coreui/coreui/scss/coreui.scss";
 
 .container {
 	@include directionY;
@@ -14,6 +15,10 @@
       .title {
         margin-bottom: 10px;
       }
+			.cardBody {
+				width: 80%;
+				text-align: center;
+			}
 		}
 	}
 }

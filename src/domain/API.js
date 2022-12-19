@@ -17,7 +17,8 @@ const urls = {
   profileFulfillment: `/student/profile-fulfillment`,
   uploadDocument: '/student/upload-docs',
   paymentFulfillment: '/payment/fulfillment',
-  fetchStudent: '/student'
+  fetchStudent: '/student',
+  uploadCertificate: '/teacher/upload-certificate',
 };
 
 const callAPI = (endpoint, method, headers = {}, params = {}, data = {}) => {
@@ -87,4 +88,9 @@ export const paymentFulfillment = (data) => {
 }
 export const fetchStudent = () => {
   return callAPI(urls.fetchStudent, 'get', {})
+}
+
+export const uploadCertificate = (data, id) => {
+  console.log(id, '<<< id API')
+  return callAPI(`${urls.uploadCertificate}/${id}`, 'post', {}, {}, data)
 }
