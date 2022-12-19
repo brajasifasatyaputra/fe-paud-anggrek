@@ -125,7 +125,7 @@ const UploadDocument = () => {
 				<Navbar />
 				<div className={classes.body}>
 					<div className={classes.teacherData}>
-						<p className={classes.title}>Upload Dokuemen Siswa</p>
+						<p className={classes.title}>Upload Dokumen Siswa</p>
 					</div>
 				</div>
 				<form className={classes.form} onSubmit={onSubmitForm}>

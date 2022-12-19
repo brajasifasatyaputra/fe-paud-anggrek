@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Alert, Paper } from '@mui/material';
 import { useHistory } from "react-router";
 
-import { paymentFulfillment } from "../../../store/actions";
+import { paymentFulfillment, getStudentProfile } from "../../../store/actions";
 
 import classes from './index.module.scss';
 import Navbar from "../../../components/Navbar";
@@ -21,8 +21,11 @@ const RegisterPayment = () => {
 	const [isSuccess, setIsSuccess] = useState(false);
 	const [isFailed, setIsFailed] = useState(false);
 	const [errMsg, setErrMsg] = useState('');
-	// console.log(isFailed, '<<< isFailed');
+
+  const student = useSelector((state) => state.mainReducer.student);
+
 	useEffect(() => {
+		dispatch(getStudentProfile());
 		// dispatch(fetchTeacher());
 		// dispatch(fetchAssessment());
 	},[])
@@ -37,6 +40,7 @@ const RegisterPayment = () => {
 	const handleOpen = () => {
 		setOpen(!open);
 	};
+	console.log(student, '<<< student');
 
 	const handleFormChange = (event) => {
 		if (event.target.files) {
@@ -54,11 +58,13 @@ const RegisterPayment = () => {
 	const onSubmitForm = (e) => {
 		e.preventDefault();
 		const formData = new FormData();
-    formData.set('nama_bank', input.nama_bank);
-    formData.set('pembayaran_pertama', input.pembayaran_pertama[0], input.pembayaran_pertama[0].name);
     formData.set('nama_pengirim', input.nama_pengirim);
     formData.set('metode_pembayaran', input.metode_pembayaran);
-    formData.set('kode_pembayaran', input.kode_pembayaran);
+    formData.set('kode_pembayaran', student.nomor_pendaftaran);
+		if (input?.metode_pembayaran.toLowerCase() === 'transfer') {
+			formData.set('nama_bank', input.nama_bank);
+			formData.set('pembayaran_pertama', input.pembayaran_pertama[0], input.pembayaran_pertama[0].name);
+		}
 		// console.log(input, '<<< Input');
 		
 		dispatch(
@@ -105,7 +111,7 @@ const RegisterPayment = () => {
 							</div>
 							<div className={classes.inputColumn}>
 								<label for="kode_pembayaran">Kode Pembayaran</label>
-								<input required name='kode_pembayaran' type='text' onChange={handleFormChange} value={input?.kode_pembayaran} />
+								<input required disabled name='kode_pembayaran' type='text' onChange={handleFormChange} value={student?.nomor_pendaftaran} />
 							</div>
 							<div className={classes.inputRow}>
 								<div className={classes.left}>
@@ -118,7 +124,7 @@ const RegisterPayment = () => {
 								</div>
 								<div className={classes.right}>
 									<label for="nama_bank">Nama Bank</label>
-									<input required name='nama_bank' type='text' onChange={handleFormChange} value={input?.nama_bank} />
+									<input required={input?.metode_pembayaran?.toLowerCase() === 'transfer'} disabled={input?.metode_pembayaran?.toLowerCase() === 'tunai'} name='nama_bank' type='text' onChange={handleFormChange} value={input?.nama_bank} />
 								</div>
 							</div>
 						</div>
@@ -129,7 +135,7 @@ const RegisterPayment = () => {
                 onChange={(e) => handleFormChange(e)}
                 type="file"
                 name="pembayaran_pertama"
-                required
+                required={input?.metode_pembayaran?.toLowerCase() === 'transfer'}
               />
 						</div>
 					</Paper>
