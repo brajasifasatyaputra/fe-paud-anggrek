@@ -21,6 +21,7 @@ import {
   PAYMENT_FULFILLMENT,
   FETCH_STUDENT,
   SET_STUDENT,
+  UPLOAD_CERTIFICATE,
 } from "../constants/index";
 
 export const requestHelloWorld = () => {
@@ -171,5 +172,15 @@ export const setStudent = (students) => {
   return {
     type: SET_STUDENT,
     students,
+  }
+}
+
+export const uploadCertificate = (data, id, cbSuccess, cbFailed) => {
+  return {
+    type: UPLOAD_CERTIFICATE,
+    data,
+    id,
+    cbSuccess,
+    cbFailed,
   }
 }

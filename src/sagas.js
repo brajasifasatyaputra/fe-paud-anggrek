@@ -13,6 +13,7 @@ import {
   UPLOAD_DOCUMENT,
   PAYMENT_FULFILLMENT,
   FETCH_STUDENT,
+  UPLOAD_CERTIFICATE,
 } from "./store/constants/index";
 import {
   setArticle,
@@ -35,6 +36,7 @@ import {
   uploadDocument,
   paymentFulfillment,
   fetchStudent,
+  uploadCertificate,
 } from "./domain/API";
 import _ from "lodash";
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
@@ -216,6 +218,26 @@ function* doFetchStudent() {
   }
 }
 
+function* doUploadCertificate({ data, id, cbSuccess, cbFailed }) {
+  try {
+    const response = yield call(uploadCertificate, data, id)
+    if (!_.isEmpty(response)) {
+      const response = yield call(fetchStudent);
+      if (response) {
+        const { students } = response.data;
+        yield put(setStudent(students))
+      }
+      cbSuccess && cbSuccess();
+    }
+  } catch (error) {
+    if (error.response.status === 400) {
+      cbFailed && cbFailed(error.response.data.message);
+    } else {
+      cbFailed && cbFailed('Mohon Maaf Terjadi kesalahan pada Sistem, Silahkan Coba lagi');
+    }
+  }
+}
+
 /*
   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
   Allows concurrent fetches of user.
@@ -241,6 +263,7 @@ export default function* mySaga() {
   yield takeLatest(UPLOAD_DOCUMENT, doUploadDocument);
   yield takeLatest(PAYMENT_FULFILLMENT, doPaymentFulfillment);
   yield takeLatest(FETCH_STUDENT, doFetchStudent);
+  yield takeLatest(UPLOAD_CERTIFICATE, doUploadCertificate);
 }
 
 // export default mySaga;
