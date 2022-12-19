@@ -59,6 +59,7 @@ const RegisterFulfillment = () => {
     formData.set('foto_murid', input.foto_murid[0], input.foto_murid[0].name);
     formData.set('jenis_kelamin', input.jenis_kelamin);
     formData.set('tempat_lahir', input.tempat_lahir);
+    formData.set('kelompok_belajar', input.kelompok_belajar);
     formData.set('agama', input.agama);
     formData.set('kewarganegaraan', input.kewarganegaraan);
     formData.set('anak_ke_dari', input.anak_ke_dari);
@@ -108,9 +109,19 @@ const RegisterFulfillment = () => {
 					<Paper className={classes.studentFormContainer}>
 						<div className={classes.leftSection}>
 							<p>Data Siswa</p>
-							<div className={classes.inputColumn}>
-								<label for="nama_panggilan">Nama Panggilan</label>
-								<input required name='nama_panggilan' type='text' onChange={handleFormChange} />
+							<div className={classes.inputRow}>
+								<div className={classes.left}>
+									<label for="nama_panggilan">Nama Panggilan</label>
+									<input required name='nama_panggilan' type='text' onChange={handleFormChange} />
+								</div>
+								<div className={classes.right}>
+									<label for="kelompok_belajar">Kelompok belajar</label>
+									<select required name="kelompok_belajar" id="kelompok_belajar" className={classes.select} onChange={(e) => handleFormChange(e)}>
+										<option disabled selected>-- Pilih --</option>
+											<option value='Bintang'>Bintang ( usia 4 - 5 tahun)</option>
+											<option value='Bulan'>Bulan ( usia 5 - 6 tahun)</option>
+									</select>
+								</div>
 							</div>
 							<div className={classes.inputRow}>
 								<div className={classes.left}>
