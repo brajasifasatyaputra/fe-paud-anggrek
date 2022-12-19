@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import classes from './index.module.scss';
+import _ from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStudentProfile, getTeacherProfile } from '../../store/actions';
 import Navbar from '../../components/Navbar';
@@ -10,6 +11,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const student = useSelector((state) => state.mainReducer.student);
   console.log(student, 'student');
+  const img = 'https://tse1.mm.bing.net/th?id=OIP.zsaaVp0tIiSnOK-1rYpBnwAAAA&pid=Api&P=0';
 
   useEffect(() => {
     const role = localStorage.getItem('role');
@@ -26,7 +28,7 @@ const Profile = () => {
     <div className={classes.container}>
       <div className={classes.wrapper}>
         <Navbar />
-        <img className={classes.jumbptron} src={jumbotron} alt='jumbotron' />
+        <img className={classes.jumbotron} src={jumbotron} alt='jumbotron' />
         <div className={classes.mainTitle}>
           Profile
         </div>
@@ -36,64 +38,91 @@ const Profile = () => {
             <div className={classes.wrapper}>
               <div className={classes.biodata}>
                 <p className={classes.label}>Nama Siswa</p>
-                <div className={classes.name}>Nama </div>
-                <p className={classes.label}>NISN</p>
-                <div className={classes.name}>Nama </div>
+                <div className={classes.name}>{student.nama_lengkap}</div>
                 <p className={classes.label}>NIK</p>
-                <div className={classes.name}>Nama </div>
+                <div className={classes.name}>{student.nik_anak}</div>
                 <p className={classes.label}>Jenis Kelamin</p>
-                <div className={classes.name}>Nama </div>
+                <div className={classes.name}>{student.jenis_kelamin}</div>
                 <p className={classes.label}>Tempat, Tanggal Lahir</p>
-                <div className={classes.name}>Nama </div>
+                <div className={classes.name}>{student.tempat_lahir}</div>
                 <p className={classes.label}>Kelompok Belajar</p>
-                <div className={classes.name}>Nama </div>
+                <div className={classes.name}>{student.kelompok_belajar ? student.kelompok_belajar : '-'}</div>
                 <p className={classes.label}>Kode Pembayaran</p>
-                <div className={classes.name}>Nama </div>
+                <div className={classes.name}>{student.nomor_pendaftaran}</div>
                 <p className={classes.label}>Alamat</p>
-                <div className={classes.name}>Nama</div>
+                <div className={classes.name}>{student.alamat_rumah}</div>
               </div>
               <div className={classes.document}>
-                <p className={classes.statusTitle}>Status Pendaftaran</p>
-                <div className={classes.status}>Status</div>
-                <img alt='avatar' />
-                <div>Lihat Sertifikat</div>
+                <div className={classes.wrapper}>
+                  <p className={classes.statusTitle}>Status Pendaftaran</p>
+                  <div className={classes.status}>{student.status_pendaftaran}</div>
+                  <img className={classes.img} src={student.foto_murid ? student.foto_murid : img} alt='avatar' />
+                  <div className={classes.sertification}>Lihat Sertifikat</div>
+                </div>
               </div>
             </div>
           </div>
           <div className={classes.parentBiodataWrapper}>
-            <p className={classes.title}>Data Orang Tua/Wali Siswa/i</p>
-            <div className={classes.wrapper}>
-              <div className={classes.biodataFather}>
-                <p className={classes.label}>Nama Ayah</p>
-                <div className={classes.name}>Nama</div>
-                <p className={classes.label}>No. Telpon</p>
-                <div className={classes.name}>Nama</div>
-                <p className={classes.label}>Jenis Kelamin</p>  
-                <div className={classes.name}>Nama</div>
-                <p className={classes.label}>Tempat, Tanggal Lahirh</p>
-                <div className={classes.name}>Nama</div>
-                <p className={classes.label}>No. KTP Ayah</p>
-                <div className={classes.name}>Nama</div>
-                <p className={classes.label}>Pekerjaan Ayah</p>
-                <div className={classes.name}>Nama</div>
-                <p className={classes.label}>Alamat</p>
-                <div className={classes.name}>Nama</div>
+            {/* <div className={classes.container}> */}
+              <div className={classes.wrapper}>
+                <p className={classes.title}>Data Orang Tua/Wali Siswa/i</p>
+                <div className={classes.mainContent}>
+                  <div className={classes.biodataFather}>
+                    <p className={classes.label}>Nama Ayah</p>
+                    <div className={classes.name}>{student.nama_ayah}</div>
+                    <p className={classes.label}>No. Telpon</p>
+                    <div className={classes.name}>{student.telpon_ayah}</div>
+                    <p className={classes.label}>Pendidikan</p>
+                    <div className={classes.name}>{student.pendidikan_ayah}</div>
+                    <p className={classes.label}>Pekerjaan Ayah</p>
+                    <div className={classes.name}>{student.pekerjaan_ayah}</div>
+                    <p className={classes.label}>Penghasilan</p>
+                    <div className={classes.name}>{student.penghasilan_ayah}</div>
+                    <p className={classes.label}>Alamat</p>
+                    <div className={classes.name}>{student.alamat_rumah}</div>
+                  </div>
+                  <div className={classes.biodataMother}>
+                    <p className={classes.label}>Nama Ibu</p>
+                    <div className={classes.name}>{student.nama_ibu}</div>
+                    <p className={classes.label}>No. Telpon</p>
+                    <div className={classes.name}>{student.telpon_ibu}</div>
+                    <p className={classes.label}>Pendidikan</p>
+                    <div className={classes.name}>{student.pendidikan_ibu}</div>
+                    <p className={classes.label}>Pekerjaan Ibu</p>
+                    <div className={classes.name}>{student.pekerjaan_ibu}</div>
+                    <p className={classes.label}>Penghasilan</p>
+                    <div className={classes.name}>{student.penghasilan_ibu}</div>
+                    <p className={classes.label}>Alamat</p>
+                    <div className={classes.name}>{student.alamat_rumah}</div>
+                  </div>
+                </div>
               </div>
-              <div className={classes.biodataMother}>
-                <p className={classes.label}>Nama Ibu</p>
-                <div className={classes.name}>Nama</div>
-                <p className={classes.label}>No. Telpon</p>
-                <div className={classes.name}>Nama</div>
-                <p className={classes.label}>Jenis Kelamin</p>
-                <div className={classes.name}>Nama</div>
-                <p className={classes.label}>Tempat, Tanggal Lahir</p>
-                <div className={classes.name}>Nama</div>
-                <p className={classes.label}>No. KTP Ibu</p>
-                <div className={classes.name}>Nama</div>
-                <p className={classes.label}>Pekerjaan Ibu</p>
-                <div className={classes.name}>Nama</div>
-                <p className={classes.label}>Alamat</p>
-                <div className={classes.name}>Nama</div>
+            {/* </div> */}
+          </div>
+          <div className={classes.banner}>
+            <p>Silahkan Beri Penilaian atau Pesan dan Kesan kepada SPS PAUD Anggrek 05</p>
+          </div>
+          <div className={classes.testimoniContainer}>
+            <div className={classes.testimoni}>
+              <div className={classes.inputData}>
+                <form className={classes.input}>
+                  <div className={classes.upper}>
+                    <div className={classes.name}>
+                      <label>Nama :</label>
+                      <input />
+                    </div>
+                    <div className={classes.contact}>
+                      <label>Kontak :</label>
+                      <input />
+                    </div>
+                  </div>
+                  <div className={classes.bottom}>
+                    <div className={classes.contact}>
+                      <label>Tuliskan Peniliaian atau pesan dan kesan untuk SPS PAUD Anggrek 05 :</label>
+                      <input />
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -101,7 +130,7 @@ const Profile = () => {
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
 export default Profile
