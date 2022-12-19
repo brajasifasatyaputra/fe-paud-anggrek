@@ -1,0 +1,63 @@
+@import '../../styles//base';
+
+.container {
+  @include directionY;
+  overflow-x: hidden;
+  @include body;
+  .wrapper {
+    @include directionY;
+    align-items: center;
+    .jumbptron {
+      border: 1px solid red;
+      margin-top: 13%;
+      width: 40%;
+    }
+    .mainTitle {
+      width: 24%;
+      margin-top: 2%;
+      padding: 1%;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 180px;
+      color: $color-pink-paw;
+      background-color: $color-protanomali;
+    }
+    .body {
+      width: 100%;
+      border: 1px solid red;
+      @include directionY;
+      margin: 5% 0;
+      .biodataWrapper {
+        width: 90%;
+        @include content-center;
+        background-color: $color-protanomali;
+        border-radius: 20px;
+        border: 1px solid blue;
+        .title {
+          text-align: center;
+        }
+        .wrapper {
+          width: 90%;
+          border: 1px solid blue;
+          @include content-center;
+          @include directionX;
+          .biodata {
+            width: 50%;
+            margin-bottom: 3%;
+            border: 1px solid red;
+            .label {
+              color: $color-ultra-white;
+            }
+            .name {
+              border: 1px solid $color-protanomali;
+            }
+          }
+          .document {
+            width: 50%;
+            border: 1px solid red;
+          }
+        }
+      }
+    }
+  }
+}

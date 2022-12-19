@@ -9,9 +9,6 @@ import classes from './index.module.scss';
 import Navbar from "../../../components/Navbar";
 import BannerRegister from '../../../components/Banner';
 import Footer from "../../../components/Footer";
-import secretary from '../../../static/images/secretary.webp';
-import headmaster from '../../../static/images/headmaster.webp';
-import treasurer from '../../../static/images/treasurer.webp';
 
 const TeacherInformation = () => {
 	const dispatch = useDispatch();
@@ -64,7 +61,7 @@ const TeacherInformation = () => {
 			)
 		)
 	}
-	console.log(role, '<<< role');
+	// console.log(role, '<<< role');
   return (
 		<div className={classes.container}>
 			<div className={classes.wrapper}>
