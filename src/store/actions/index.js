@@ -24,6 +24,8 @@ import {
   UPLOAD_CERTIFICATE,
   GET_PROFILE_STUDENT,
   SET_STUDENT_PROFILE,
+  GET_PROFILE_TEACHER,
+  SET_TEACHER_PROFILE,
 } from "../constants/index";
 
 export const requestHelloWorld = () => {
@@ -197,5 +199,18 @@ export const setStudentProfile = (student) => {
   return {
     type: SET_STUDENT_PROFILE,
     student,
+  }
+}
+
+export const getTeacherProfile = () => {
+  return {
+    type: GET_PROFILE_TEACHER,
+  }
+}
+
+export const setTeacherProfile = (teacher) => {
+  return {
+    type: SET_TEACHER_PROFILE,
+    teacher,
   }
 }
