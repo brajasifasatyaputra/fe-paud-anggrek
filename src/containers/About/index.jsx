@@ -5,7 +5,6 @@ import { fetchGallery } from '../../store/actions'
 import classes from './index.module.scss';
 import Navbar from "../../components/Navbar";
 import BannerRegister from "../../components/Banner";
-import ff from '../../static/images/firefighter.webp';
 import Footer from "../../components/Footer";
 import profile from '../../static/data/about';
 import structure from '../../static/images/structure.webp';

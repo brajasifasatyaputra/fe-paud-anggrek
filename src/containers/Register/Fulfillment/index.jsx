@@ -22,7 +22,7 @@ const RegisterFulfillment = () => {
   const assessments = useSelector((state) => state.mainReducer.assessments);
 	const [isSuccess, setIsSuccess] = useState(false);
 	const [isFailed, setIsFailed] = useState(false);
-	console.log(isFailed, '<<< isFailed');
+	// console.log(isFailed, '<<< isFailed');
 	useEffect(() => {
 		// dispatch(fetchTeacher());
 		// dispatch(fetchAssessment());

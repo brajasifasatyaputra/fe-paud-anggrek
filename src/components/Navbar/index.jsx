@@ -42,6 +42,9 @@ const Navbar = () => {
   const goToRegistration = () => {
     history.push('/information/registration');
   };
+  const goToProfile = () => {
+    history.push('./profile');
+  };
   const { width } = useWindowDimensions();
   const [isShown, setIsShown] = useState(false);
 
@@ -98,18 +101,11 @@ const Navbar = () => {
             </Link>
           </a>
           <a className={location.pathname === "/information/activity" ? `${classes.dropdownActive}` : `${classes.dropdownPassive}`} onMouseEnter={() => setIsShown(true)}>
-            <div className={classes.dropdownWrapper} 
-            // onMouseEnter={() => setIsShown(true)}
-            >
-              {/* <Link className="link" to="/information/activity"> */}
-                <p className={classes.dropdown} onClick={goToActivity}
-                // onMouseEnter={() => setIsShown(true)}
-                >
-                {/* onMouseLeave={() => setIsShown(false)}> */}
-                  Informasi
-                </p>
-                {isShown && Informationdropdown()}
-              {/* </Link> */}
+            <div className={classes.dropdownWrapper}>
+              <p className={classes.dropdown} onClick={goToActivity}>
+                Informasi
+              </p>
+              {isShown && Informationdropdown()}
             </div>
           </a>
           <a className={location.pathname === "/contact" ? `${classes.active}` : ""}>

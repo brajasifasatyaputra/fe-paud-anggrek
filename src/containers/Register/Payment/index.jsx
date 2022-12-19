@@ -21,7 +21,7 @@ const RegisterPayment = () => {
 	const [isSuccess, setIsSuccess] = useState(false);
 	const [isFailed, setIsFailed] = useState(false);
 	const [errMsg, setErrMsg] = useState('');
-	console.log(isFailed, '<<< isFailed');
+	// console.log(isFailed, '<<< isFailed');
 	useEffect(() => {
 		// dispatch(fetchTeacher());
 		// dispatch(fetchAssessment());
@@ -59,7 +59,7 @@ const RegisterPayment = () => {
     formData.set('nama_pengirim', input.nama_pengirim);
     formData.set('metode_pembayaran', input.metode_pembayaran);
     formData.set('kode_pembayaran', input.kode_pembayaran);
-		console.log(input, '<<< Input');
+		// console.log(input, '<<< Input');
 		
 		dispatch(
 			paymentFulfillment(

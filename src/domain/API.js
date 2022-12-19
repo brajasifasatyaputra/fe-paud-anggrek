@@ -92,7 +92,6 @@ export const fetchStudent = () => {
 }
 
 export const uploadCertificate = (data, id) => {
-  console.log(id, '<<< id API')
   return callAPI(`${urls.uploadCertificate}/${id}`, 'post', {}, {}, data)
 }
 
