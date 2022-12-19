@@ -11,7 +11,7 @@ import Navbar from "../../../components/Navbar";
 import BannerRegister from '../../../components/Banner';
 import Footer from "../../../components/Footer";
 
-const TeacherInformation = () => {
+const RegisterFulfillment = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const [open, setOpen] = useState(false);
@@ -238,7 +238,7 @@ const TeacherInformation = () => {
 								<input required name='pendidikan_ibu' type='text' onChange={handleFormChange} />
 							</div>
 							<div className={classes.mid}>
-								<label for="pekerjaan_ibu">Pekerjaan Ayah</label>
+								<label for="pekerjaan_ibu">Pekerjaan Ibu</label>
 								<input required name='pekerjaan_ibu' type='text' onChange={handleFormChange} />
 							</div>
 							<div className={classes.right}>
@@ -264,4 +264,4 @@ const TeacherInformation = () => {
 	);
 };
 
-export default TeacherInformation;
+export default RegisterFulfillment;

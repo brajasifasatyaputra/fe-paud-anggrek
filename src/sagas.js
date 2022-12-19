@@ -11,6 +11,8 @@ import {
   STUDENT_LOGIN,
   PROFILE_FULFILLMENT,
   UPLOAD_DOCUMENT,
+  PAYMENT_FULFILLMENT,
+  FETCH_STUDENT,
 } from "./store/constants/index";
 import {
   setArticle,
@@ -18,6 +20,7 @@ import {
   setTestimony,
   setTeacher,
   setAssessment,
+  setStudent,
 } from "./store/actions/index";
 import {
   fetchArticle,
@@ -30,6 +33,8 @@ import {
   studentLogin,
   profileFulfillment,
   uploadDocument,
+  paymentFulfillment,
+  fetchStudent,
 } from "./domain/API";
 import _ from "lodash";
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
@@ -69,7 +74,7 @@ function* doFetchTestimony() {
     const response = yield call(fetchTestimonies);
     if (response) {
       const { testimonies } = response.data;
-      yield put(setTestimony(testimonies))
+      yield put(setTestimony(testimonies.reverse()))
     }
   } catch (e) {
     console.log(e)
@@ -93,7 +98,7 @@ function* doFetchAssessments() {
     const response = yield call(fetchAssessment);
     if (response) {
       const { assessments } = response.data;
-      yield put(setAssessment(assessments))
+      yield put(setAssessment(assessments.reverse()))
     }
   } catch (e) {
     console.log(e)
@@ -109,7 +114,7 @@ function* doSendAssessment({ data, cbSuccess, cbFailed }) {
       const response = yield call(fetchAssessment);
       if (response) {
         const { assessments } = response.data;
-        yield put(setAssessment(assessments))
+        yield put(setAssessment(assessments.reverse()))
       }
       cbSuccess && cbSuccess()
     }
@@ -139,7 +144,7 @@ function* registAccount({ data, cbSuccess, cbFailed }) {
 function* loginAccount({ studentData, cb, scSuccess, isStudent }) {
   try {
     const response = yield call(studentLogin, studentData, isStudent);
-    localStorage.setItem('access_token', response?.token);
+    localStorage.setItem('access_token', response?.access_token);
     localStorage.setItem('role', response?.role);
     scSuccess && scSuccess();
   } catch (error) {
@@ -170,7 +175,7 @@ function* doUploadDocument({ data, cbSuccess, cbFailed }) {
   try {
     const response = yield call(uploadDocument, data)
     if (response) {
-      cbSuccess && cbSuccess();
+      cbSuccess && cbSuccess(response?.data?.kode_pembayaran);
     }
   } catch (error) {
     if (error.response.status === 400) {
@@ -178,6 +183,36 @@ function* doUploadDocument({ data, cbSuccess, cbFailed }) {
     } else {
       cbFailed && cbFailed('Mohon Maaf Terjadi kesalahan pada Sistem, Silahkan Coba lagi');
     }
+  }
+}
+
+function* doPaymentFulfillment({ data, cbSuccess, cbFailed }) {
+  try {
+    const response = yield call(paymentFulfillment, data)
+    if (response) {
+      cbSuccess && cbSuccess();
+    }
+  } catch (error) {
+    if (error.response.status === 400) {
+      console.log(error.response.data.message, '<<<< message');
+      cbFailed && cbFailed(error.response.data.message);
+    } else if (error.response.status === 404) {
+      cbFailed && cbFailed('Mohon Maaf, Kode Pembayaran Anda Salah');
+    } else {
+      cbFailed && cbFailed('Mohon Maaf Terjadi kesalahan pada Sistem, Silahkan Coba lagi');
+    }
+  }
+}
+
+function* doFetchStudent() {
+  try {
+    const response = yield call(fetchStudent);
+    if (response) {
+      const { students } = response.data;
+      yield put(setStudent(students))
+    }
+  } catch (e) {
+    console.log(e)
   }
 }
 
@@ -204,6 +239,8 @@ export default function* mySaga() {
   yield takeLatest(STUDENT_LOGIN, loginAccount);
   yield takeLatest(PROFILE_FULFILLMENT, doProfileFulfillment);
   yield takeLatest(UPLOAD_DOCUMENT, doUploadDocument);
+  yield takeLatest(PAYMENT_FULFILLMENT, doPaymentFulfillment);
+  yield takeLatest(FETCH_STUDENT, doFetchStudent);
 }
 
 // export default mySaga;

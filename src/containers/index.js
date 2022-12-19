@@ -6,3 +6,5 @@ export { default as RegistrationInformation } from './Information/Registration/i
 export { default as ContactPage } from './Contact/index';
 export { default as RegisterFulfillment } from './Register/Fulfillment';
 export { default as RegisterUploadDocument } from './Register/UploadDocument';
+export { default as RegisterPayment } from './Register/Payment';
+export { default as StudentList } from './StudentList';

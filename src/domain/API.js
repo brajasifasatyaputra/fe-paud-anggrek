@@ -16,6 +16,8 @@ const urls = {
   loginTeacher: `${teacher_API}/login`,
   profileFulfillment: `/student/profile-fulfillment`,
   uploadDocument: '/student/upload-docs',
+  paymentFulfillment: '/payment/fulfillment',
+  fetchStudent: '/student'
 };
 
 const callAPI = (endpoint, method, headers = {}, params = {}, data = {}) => {
@@ -79,4 +81,10 @@ export const profileFulfillment = (data) => {
 }
 export const uploadDocument = (data) => {
   return callAPI(urls.uploadDocument, 'post', {}, {}, data)
+}
+export const paymentFulfillment = (data) => {
+  return callAPI(urls.paymentFulfillment, 'post', {}, {}, data)
+}
+export const fetchStudent = () => {
+  return callAPI(urls.fetchStudent, 'get', {})
 }

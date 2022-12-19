@@ -1,0 +1,19 @@
+@import '../../styles/base';
+
+.container {
+	@include directionY;
+	overflow-x: hidden;
+	@include body;
+	.wrapper {
+		.body {
+			@include directionY;
+			margin-top: 12%;
+			background-color: $color-ultra-white;
+			align-items: center;
+      padding: 2rem;
+      .title {
+        margin-bottom: 10px;
+      }
+		}
+	}
+}

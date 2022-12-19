@@ -16,13 +16,13 @@ import treasurer from '../../../static/images/treasurer.webp';
 const TeacherInformation = () => {
 	const dispatch = useDispatch();
 	const [open, setOpen] = useState(false);
-	const [isLogin] = useState(!_.isEmpty(localStorage.getItem('access_token')))
+	const [isLogin] = useState(!_.isEmpty(localStorage.getItem('access_token')));
+	const [role] = useState(localStorage.getItem('role'));
 	const [input, setInput] = useState({});
   const teachers = useSelector((state) => state.mainReducer.teachers);
   const assessments = useSelector((state) => state.mainReducer.assessments);
 	const [isSuccess, setIsSuccess] = useState(false);
 	const [isFailed, setIsFailed] = useState(false);
-	console.log(isFailed, '<<< isFailed');
 	useEffect(() => {
 		dispatch(fetchTeacher());
 		dispatch(fetchAssessment());
@@ -51,7 +51,11 @@ const TeacherInformation = () => {
 			submitAssessment(
 				input,
 				() => {
-					setInput({});
+					setInput({
+						nama: '',
+						kontak: '',
+						message: ''
+					});
 					setIsSuccess(true);
 				},
 				() => {
@@ -59,9 +63,8 @@ const TeacherInformation = () => {
 				}
 			)
 		)
-		console.log(input, '<<< input')
 	}
-
+	console.log(role, '<<< role');
   return (
 		<div className={classes.container}>
 			<div className={classes.wrapper}>
@@ -106,49 +109,51 @@ const TeacherInformation = () => {
 						</div>
 					</div>
 					<BannerRegister />
-					<div className={classes.scoringContainer}>
-						<div className={classes.title}>Beri Penilaian Pendidik SPS PAUD Anggrek 05</div>
-						<div className={classes.scoring}>
-							<form onSubmit={onSubmit}>
-								{isSuccess && <Alert severity="success">Penilaian Berhasil Terkirim</Alert>}
-								{isFailed && <Alert severity="error">Mohon Maaf, terjadi kesalahan pada sistem. Silakan coba lagi</Alert>}
-								<div className={classes.upperSection}>
-									<div className={classes.formScorer}>
-										<div className={classes.name}>
-											<p>Nama :</p>
-											<input required name='nama' type='text' onChange={handleScore} />
+					{ isLogin && role === '2' &&
+						<div className={classes.scoringContainer}>
+							<div className={classes.title}>Beri Penilaian Pendidik SPS PAUD Anggrek 05</div>
+							<div className={classes.scoring}>
+								<form onSubmit={onSubmit}>
+									{isSuccess && <Alert severity="success">Penilaian Berhasil Terkirim</Alert>}
+									{isFailed && <Alert severity="error">Mohon Maaf, terjadi kesalahan pada sistem. Silakan coba lagi</Alert>}
+									<div className={classes.upperSection}>
+										<div className={classes.formScorer}>
+											<div className={classes.name}>
+												<p>Nama :</p>
+												<input required name='nama' value={input?.nama} type='text' onChange={handleScore} />
+											</div>
+											<div className={classes.contact}>
+												<p>Kontak :</p>
+												<input required name='kontak' value={input?.kontak} type='text' onChange={handleScore} />
+											</div>
 										</div>
-										<div className={classes.contact}>
-											<p>Kontak :</p>
-											<input required name='kontak' type='text' onChange={handleScore} />
-										</div>
-									</div>
-									<div className={classes.candidatesWrapper}>
-										<p>Penilaian Kepada : (pilih satu)</p>
-										<div className={classes.candidatesScoring}>
-											<select required name="id_guru" id="id_guru" className={classes.select} onChange={(e) => handleScore(e)}>
-												<option disabled selected>-- Pilih Guru --</option>
-												{teachers && teachers.map((teacher) => {
-													return <option value={teacher.id}>{teacher.nama}</option>
-												})}
-											</select>
-										</div>
-									</div>
-								</div>
-								<div className={classes.bottomSection}>
-									<div className={classes.testimonialWrapper}>
-										<p>Tuliskan Penilaian atau pesan dan kesan kepada pendidik SPS PAUD Anggrek 05 :</p>
-										<textarea className={classes.txtarea} name='message' type='text' onChange={handleScore} />
-										<div className={classes.buttonWrapper}>
-											<button type="submit" className={classes.btn}>
-												<p className={classes.send}>Kirim Penilaian</p>
-											</button>
+										<div className={classes.candidatesWrapper}>
+											<p>Penilaian Kepada : (pilih satu)</p>
+											<div className={classes.candidatesScoring}>
+												<select required name="id_guru" id="id_guru" className={classes.select} onChange={(e) => handleScore(e)}>
+													<option disabled selected>-- Pilih Guru --</option>
+													{teachers && teachers.map((teacher) => {
+														return <option value={teacher.id}>{teacher.nama}</option>
+													})}
+												</select>
+											</div>
 										</div>
 									</div>
-								</div>
-							</form>
+									<div className={classes.bottomSection}>
+										<div className={classes.testimonialWrapper}>
+											<p>Tuliskan Penilaian atau pesan dan kesan kepada pendidik SPS PAUD Anggrek 05 :</p>
+											<textarea value={input.message} className={classes.txtarea} name='message' type='text' onChange={handleScore} />
+											<div className={classes.buttonWrapper}>
+												<button type="submit" className={classes.btn}>
+													<p className={classes.send}>Kirim Penilaian</p>
+												</button>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
 						</div>
-					</div>
+					}
 				</div>
 				<Footer />
 			</div>

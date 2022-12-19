@@ -231,13 +231,11 @@
                 justify-content: flex-end;
                 margin-bottom: 2%;
                 .btn {
-                  // height: 40px;
                   padding: 0 1%;
                   border-radius: 10px;
                   background-color: $color-ultra-white;
                   color: $color-protanomali;
-                  .send {
-                  }
+                  cursor: pointer;
                 }
               }
             }
