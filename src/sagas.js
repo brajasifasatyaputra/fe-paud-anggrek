@@ -26,7 +26,7 @@ import {
   setStudent,
   setStudentProfile,
   setTeacherProfile,
-  getTeacherProfile,
+  isLogin,
 } from "./store/actions/index";
 import {
   fetchArticle,
@@ -136,9 +136,10 @@ function* registAccount({ data, cbSuccess, cbFailed }) {
   try {
     const dataStudent = omit(data, ['retypePassword']);
     const newStudent = yield call(studentRegister, dataStudent);
-    if (newStudent?.token && newStudent?.role) {
-      localStorage.setItem('access_token', newStudent?.token);
+    if (newStudent?.access_token && newStudent?.role) {
+      localStorage.setItem('access_token', newStudent?.access_token);
       localStorage.setItem('role', newStudent?.role);
+      yield put(isLogin(true));
       cbSuccess && cbSuccess();
     }
   } catch (error) {
@@ -155,6 +156,7 @@ function* loginAccount({ studentData, cb, scSuccess, isStudent }) {
     const response = yield call(studentLogin, studentData, isStudent);
     localStorage.setItem('access_token', response?.access_token);
     localStorage.setItem('role', response?.role);
+    yield put(isLogin(true));
     scSuccess && scSuccess();
   } catch (error) {
     if (error.response.status === 401) {

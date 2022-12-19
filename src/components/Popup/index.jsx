@@ -45,14 +45,17 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
   const onSubmitRegister = (e) => {
     e.preventDefault();
     if (passwordValidation()) {
-      dispatch(registerStudent(formRegister, () => {
-        history.push('/');
-        handleClose(false);
-      }, 
-      (error) => {
-        setErrMsg(error);
-        setIsFailed(true);
-      }));
+      dispatch(registerStudent(
+        formRegister,
+        () => {
+          history.push('/');
+          handleClose(false);
+        }, 
+        (error) => {
+          setErrMsg(error);
+          setIsFailed(true);
+        }
+      ));
     };
   };
   const onSubmitLogin = (e) => {

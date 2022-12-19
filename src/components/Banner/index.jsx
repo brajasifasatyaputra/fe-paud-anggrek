@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from './index.module.scss';
 import Popup from "../Popup";
 import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
 import _ from 'lodash';
 
 export const BannerRegister = () => {
 	const [show, setShow] = useState(false);
   const [nameModal, setNameModal] = useState('');
-	const [isLogin] = useState(!_.isEmpty(localStorage.getItem('access_token')));
+	const [isLogin, setIsLogin] = useState(!_.isEmpty(localStorage.getItem('access_token')));
+  const isLoginState = useSelector((state) => state.mainReducer.isLogin);
 	const history = useHistory();
+
+	useEffect(() => {
+    setIsLogin(!_.isEmpty(localStorage.getItem('access_token')));
+  }, [isLoginState])
 
 	const goToRegisterFulfillment = () => {
 		history.push('/register/fulfillment')

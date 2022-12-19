@@ -12,6 +12,7 @@ const Profile = () => {
   const [userRole, setUserRole] = useState('');
   const dispatch = useDispatch();
   const student = useSelector((state) => state.mainReducer.student);
+  const teacher = useSelector((state) => state.mainReducer.teacher);
   console.log(student, 'student');
   const img = 'https://tse1.mm.bing.net/th?id=OIP.zsaaVp0tIiSnOK-1rYpBnwAAAA&pid=Api&P=0';
 
@@ -136,7 +137,7 @@ const Profile = () => {
       </div>
     );
   }
-  return userRole === '2' ? generateUserProfile() : <TeacherProfile />;
+  return userRole === '2' ? generateUserProfile() : <TeacherProfile teacher={teacher} />;
 };
 
 export default Profile

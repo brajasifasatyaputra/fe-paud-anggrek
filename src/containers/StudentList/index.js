@@ -121,7 +121,8 @@ const StudentList = () => {
 							items={students && students}
 							fields={fields}
 							itemsPerPage={5}
-							dark
+							// dark
+							border
 							striped
 							pagination
 							sorter
@@ -145,7 +146,7 @@ const StudentList = () => {
 								'Action': (item, index) => {
 									return (
 										<td className="py-5" style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%'}}>
-											<CButton color="info" size="sm" style={{cursor: 'pointer'}} onClick={() => openPopupUpload(item)}>
+											<CButton color="success" size="sm" style={{cursor: 'pointer'}} onClick={() => openPopupUpload(item)}>
 												Upload Sertifikat
 											</CButton>
 										</td>

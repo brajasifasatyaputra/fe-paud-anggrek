@@ -1,130 +1,84 @@
 @import '../../styles/base';
 
 .container {
-	@include directionY;
-	overflow-x: hidden;
-	@include body;
-	.wrapper {
-		.body {
-			@include directionY;
-			margin-top: 12%;
-			background-color: $color-ultra-white;
-			align-items: center;
-			.btn {
-				width: 24%;
-				margin-top: 2%;
-				padding: 1%;
-				font-weight: bold;
-				text-align: center;
-				border-radius: 180px;
-				background-color: $color-pink-paw;
-			}
-			.mainBody {
-        @include directionY;
-        align-items: center;
+  @include directionY;
+  overflow-x: hidden;
+  @include body;
+  background-color: $color-ultra-white;
+  .wrapper {
+    @include directionY;
+    align-items: center;
+    .teacherImg {
+      margin-top: 17%;
+      width: 20%;
+    }
+    .teacherName {
+      width: 24%;
+      margin-top: 2%;
+      padding: 1%;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 180px;
+      color: $color-ultra-white;
+      background-color: $color-protanomali;
+      font-size: 35px;
+    }
+    .body {
+      width: 100%;
+      @include directionY;
+      margin: 5% 0;
+      .teacherBiodata {
         width: 70%;
-        margin: 5% 0;
-        .top {
-          @include directionX;
-          width: 70%;
-          justify-content: space-around;
-          align-items: center;
-          .left {
-            @include directionY;
-            align-items: center;
-            img {
-              width: 150px;
-            }
-          }
-          .right {
-            @include directionY;
-            align-items: center;
-            img {
-              width: 150px;
-            }
-          }
-        }
-        .bottom {
+        @include directionY;
+        @include content-center;
+        .wrapper {
           @include directionY;
-          width: 50%;
-          margin-top: 2%;
-          align-items: center;
-          text-align: center;
-          img {
-            width: 15%;
-          }
-        }
-			}
-			.bodyBottom {
-				width: 100%;
-				@include directionX;
-        justify-content: space-between;
-				margin-top: 3%;
-				align-items: flex-start;
-        margin-bottom: 2%;
-        .left {
-          @include directionY;
-          align-items: center;
-          width: 45%;
-          .btn {
-            width: 50%;
-            margin: 2% 0 5% 0;
-            padding: 1%;
+          background-color: $color-grey;
+          border-radius: 20px;
+          .title {
+            color: $color-protanomali;
+            padding-top: 2%;
+            margin-bottom: 0;
             font-weight: bold;
-            text-align: center;
-            border-radius: 180px;
-            background-color: $color-pink-paw;
+            font-size: 30px;
           }
-          .testimony {
-            background-color: $color-pink-paw;
-            border-radius: 25px;
-            height: 540px;
-            padding: 5%;
-            width: 80%;
-            overflow-y: scroll;
-            &::-webkit-scrollbar {
-              width: 4px;
-            }
-            &::-webkit-scrollbar-thumb {
-              background: $color-protanomali;
-              border-radius: 20px;
-            }
-            .testimonyWrapper {
+          .mainContent {
+            @include content-center;
+            @include directionX;
+            width: 100%;
+            justify-content: space-between;
+            .biodataContent {
+              width: 90%;
+              margin-left: 5%;
+              padding: 3% 0;
+              .label {
+                font-weight: bold;
+                color: $color-protanomali;
+                margin-bottom: 2px;
+                font-size: 25px;
+              }
               .name {
-                padding: 1% 3%;
-                background-color: $color-protanomali;
-                color: $color-white;
-                width: 50%;
-                border-radius: 10px;
-              }
-              .message {
-                margin-top: 2%;
-                margin-bottom: 5%;
-                padding: 1% 3%;
-                background-color: $color-protanomali;
-                color: $color-white;
-                width: 80%;
-                min-height: 70px;
-                border-radius: 10px;
+                background-color: $color-protanomali-overlay;
+                color: $color-black;
+                margin-bottom: 15px;
+                padding: 1% 2%;
+                font-size: 25px;
+                border-radius: 5px;
+                min-height: 45px;
               }
             }
           }
         }
-        .right {
-          @include directionY;
-          align-items: center;
-          width: 45%;
-          .btn {
-            width: 50%;
-            margin: 2% 0 5% 0;
-            padding: 1%;
-            font-weight: bold;
-            text-align: center;
-            border-radius: 180px;
-            background-color: $color-pink-paw;
-          }
-        }
-			}
-		}
-	}
+      }
+    }
+    .btn {
+      background-color: $color-protanomali-overlay;
+      padding: 2%;
+      border-radius: 180px;
+      color: $color-protanomali;
+      font-size: 25px;
+      margin-bottom: 5%;
+      cursor: pointer;
+    }
+  }
 }
