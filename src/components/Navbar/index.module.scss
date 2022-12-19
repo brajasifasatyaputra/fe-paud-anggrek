@@ -42,7 +42,7 @@
       align-items: center;
       background-color: $color-pink-paw;
       border-radius: 10px;
-      border: 1px solid $color-blue-atmosphere;
+      // border: 1px solid $color-blue-atmosphere;
       a {
         color: $color-protanomali;
         font-weight: bold;
@@ -60,6 +60,7 @@
       text-align: center;
       align-items: center;
       background-color: $color-pink-paw;
+      color: $color-protanomali;
       border-radius: 10px;
       border: 1px solid $color-blue-atmosphere;
       a {
@@ -87,20 +88,27 @@
       align-items: center;
       background-color: $color-pink-paw;
       border-radius: 10px;
-      border: 1px solid $color-blue-atmosphere;
+      // border: 1px solid $color-blue-atmosphere;
+      color: $color-protanomali;
+      font-weight: bold;
       a {
         color: $color-protanomali;
         font-weight: bold;
       }
       .dropdownContainer {
-        width: 178px;
+        // width: 178px;
         position: absolute;
         font-weight: bold;
-        right: 321px;
-        top: 91px;
-        border: 1px solid $color-blue-atmosphere;
+        // right: 321px;
+        // top: 91px;
+        right: 45%;
+        top: 123px;
+  
+  
+        // border: 1px solid $color-blue-atmosphere;
         background-color: $color-pink-paw;
-        border-radius: 0px 0px 10px 10px;
+        // border-radius: 0px 0px 10px 10px;
+        border-radius: 10px;
         .dropdownWrapper {
           @include directionY;
           .wrapper {
@@ -125,6 +133,8 @@
       }
     }
     .dropdownWrapper {
+      // position: relative;
+      // border: 1px solid green;
       .dropdown {
         cursor: pointer;
         padding: 0 0 0 0;
@@ -132,25 +142,29 @@
       }
     }
     .dropdownContainer {
-      width: 178px;
+      // border: 1px solid blue;
+      // width: 178px;
       position: absolute;
       font-weight: bold;
-      right: 331.5px;
-      // right: 362.4px;
+      // right: 331.5px;
+      right: 47%;
       // top: 98px;
-      top: 91px;
-      border: 1px solid $color-blue-atmosphere;
+      // right: 70;
+      top: 123px;
+      // border: 1px solid $color-blue-atmosphere;
       background-color: $color-pink-paw;
-      border-radius: 0px 0px 10px 10px;
+      // border-radius: 0px 0px 10px 10px;
+      border-radius: 10px;
+      color: $color-protanomali;
       .dropdownWrapper {
         @include directionY;
         .activity {
-          // padding: 5%;
-          border-top: 1px solid $color-blue-atmosphere
+          padding: 5%;
+          // border-top: 1px solid $color-blue-atmosphere
         }
         .activitylast {
-          // padding: 5%;
-          border-top: 1px solid $color-blue-atmosphere
+          padding: 5%;
+          // border-top: 1px solid $color-blue-atmosphere
         }
         .activity:hover {
           background-color: $color-dark-pink-paw;

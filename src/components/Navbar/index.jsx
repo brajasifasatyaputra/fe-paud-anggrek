@@ -7,13 +7,16 @@ import useWindowDimensions from "../../utils/useWindowDimensions";
 import classes from "./index.module.scss";
 import Sidebar from "../Sidebar/index";
 import Popup from '../Popup';
+import { isLogin } from "../../store/actions";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
-  const [isLogin, setIsLogin] = useState(!_.isEmpty(localStorage.getItem('access_token')));
+  const [loginState, setIsLogin] = useState(!_.isEmpty(localStorage.getItem('access_token')));
   const [show, setShow] = useState(false);
   const [nameModal, setNameModal] = useState('');
   const history = useHistory();
   const location = useLocation();
+  const dispatch = useDispatch();
   const isLoginState = useSelector((state) => state.mainReducer.isLogin);
   console.log(isLogin, 'isLogin');
 
@@ -41,6 +44,14 @@ const Navbar = () => {
   const goToProfile = () => {
     history.push('./profile');
   };
+
+  const logoutHanlder = () => {
+    dispatch(isLogin(false));
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('role');
+    history.push('/');
+  }
+
   const { width } = useWindowDimensions();
   const [isShown, setIsShown] = useState(false);
 
@@ -52,7 +63,7 @@ const Navbar = () => {
           <div className={classes.dropdownContainer}>
             <div className={classes.dropdownWrapper}>
               <div className={classes.wrapper} onClick={goToActivity}>
-                <div className={classes.activity} onMouseEnter={() => setIsShown(true)}>
+                <div className={classes.activity} onMouseEnter={() => setIsShown(true)} >
                   <p>Informasi Kegiatan</p>
                 </div>
               </div>
@@ -63,7 +74,7 @@ const Navbar = () => {
               </div>
               <div className={classes.wrapper} onClick={goToRegistration}>
                 <div className={classes.activitylast} onMouseEnter={() => setIsShown(true)} 
-                onMouseLeave={() => setIsShown(false)}
+                
                 >
                   <p>Informasi Pendaftaran</p>
                 </div>
@@ -95,7 +106,7 @@ const Navbar = () => {
               </p>
             </Link>
           </a>
-          <a className={location.pathname === "/information/activity" ? `${classes.dropdownActive}` : `${classes.dropdownPassive}`} onMouseEnter={() => setIsShown(true)}>
+          <a className={location.pathname === "/information/activity" ? `${classes.dropdownActive}` : `${classes.dropdownPassive}`} onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
             <div className={classes.dropdownWrapper}>
               <p className={classes.dropdown} onClick={goToActivity}>
                 Informasi
@@ -110,7 +121,7 @@ const Navbar = () => {
               </p>
             </Link>
           </a>
-          {isLogin ? 
+          {loginState ? 
             <a className={location.pathname === "/profile" ? `${classes.active}` : ""}>
               <Link className="link" to="/profile">
                 <p className={classes.dropdown}>
@@ -123,6 +134,15 @@ const Navbar = () => {
               {/* <Link className="link" to="/login"> */}
                 <p className={classes.dropdown} onClick={toggleModalLogin}>
                   Login
+                </p>
+              {/* </Link> */}
+            </a>
+          }
+          {loginState &&
+            <a className={location.pathname === "/profile" ? `${classes.active}` : ""}>
+              {/* <Link className="link" to="/profile"> */}
+                <p className={classes.dropdown} onClick={logoutHanlder}>
+                  Logout
                 </p>
               {/* </Link> */}
             </a>
