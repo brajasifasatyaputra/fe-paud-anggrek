@@ -9,6 +9,7 @@ import {
   RegisterUploadDocument,
   RegisterPayment,
   StudentList,
+  Profile
   // PortfolioPage,
   // PortfolioItem,
   // NotFoundPage,
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/register/upload-document" component={RegisterUploadDocument} />
           <Route exact path="/register/payment" component={RegisterPayment} />
           <Route exact path="/student/list" component={StudentList} />
+          <Route exact path="/profile" component={Profile} />
           {/* <Route exact path="/about" component={AboutPage} />
           <Route exact path="/service" component={ServicePage} />
           <Route exact path="/contact" component={ContactPage} />

@@ -8,3 +8,4 @@ export { default as RegisterFulfillment } from './Register/Fulfillment';
 export { default as RegisterUploadDocument } from './Register/UploadDocument';
 export { default as RegisterPayment } from './Register/Payment';
 export { default as StudentList } from './StudentList';
+export { default as Profile } from './Profile';

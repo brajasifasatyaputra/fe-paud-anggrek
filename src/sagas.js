@@ -14,6 +14,7 @@ import {
   PAYMENT_FULFILLMENT,
   FETCH_STUDENT,
   UPLOAD_CERTIFICATE,
+  GET_PROFILE_STUDENT,
 } from "./store/constants/index";
 import {
   setArticle,
@@ -22,6 +23,7 @@ import {
   setTeacher,
   setAssessment,
   setStudent,
+  setStudentProfile,
 } from "./store/actions/index";
 import {
   fetchArticle,
@@ -37,6 +39,7 @@ import {
   paymentFulfillment,
   fetchStudent,
   uploadCertificate,
+  getProfileStudent,
 } from "./domain/API";
 import _ from "lodash";
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
@@ -238,6 +241,18 @@ function* doUploadCertificate({ data, id, cbSuccess, cbFailed }) {
   }
 }
 
+function* doGetProfileStudent() {
+  try {
+    const response = yield call(getProfileStudent);
+    if (response) {
+      const { student } = response.data;
+      yield put(setStudentProfile(student))
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 /*
   Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
   Allows concurrent fetches of user.
@@ -264,6 +279,7 @@ export default function* mySaga() {
   yield takeLatest(PAYMENT_FULFILLMENT, doPaymentFulfillment);
   yield takeLatest(FETCH_STUDENT, doFetchStudent);
   yield takeLatest(UPLOAD_CERTIFICATE, doUploadCertificate);
+  yield takeLatest(GET_PROFILE_STUDENT, doGetProfileStudent);
 }
 
 // export default mySaga;

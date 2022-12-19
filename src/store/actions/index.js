@@ -22,6 +22,8 @@ import {
   FETCH_STUDENT,
   SET_STUDENT,
   UPLOAD_CERTIFICATE,
+  GET_PROFILE_STUDENT,
+  SET_STUDENT_PROFILE,
 } from "../constants/index";
 
 export const requestHelloWorld = () => {
@@ -182,5 +184,18 @@ export const uploadCertificate = (data, id, cbSuccess, cbFailed) => {
     id,
     cbSuccess,
     cbFailed,
+  }
+}
+
+export const getStudentProfile = () => {
+  return {
+    type: GET_PROFILE_STUDENT,
+  }
+}
+
+export const setStudentProfile = (student) => {
+  return {
+    type: SET_STUDENT_PROFILE,
+    student,
   }
 }

@@ -7,6 +7,7 @@ import {
   SET_ASSESSMENT,
   SET_IS_LOGIN,
   SET_STUDENT,
+  SET_STUDENT_PROFILE,
 } from "../constants/index";
 
 export const initialState = {
@@ -20,6 +21,7 @@ export const initialState = {
   testimonies: [],
   assessments: [],
   students: [],
+  student: {},
 };
 
 const reducer = (state = initialState, action) =>
@@ -46,6 +48,9 @@ const reducer = (state = initialState, action) =>
         break;
       case SET_STUDENT:
         draft.students = action.students;
+        break;
+      case SET_STUDENT_PROFILE:
+        draft.student = action.student;
         break;
       default:
         return state;
