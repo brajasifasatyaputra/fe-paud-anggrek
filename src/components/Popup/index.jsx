@@ -17,9 +17,7 @@ const Popup = ({show, nameModal, handleClose, handleChangeModal}) => {
   const [isStudent, setIsStudent] = useState(true);
   const [isFailed, setIsFailed] = useState(false);
   const [errMsg, setErrMsg] = useState('');
-  // console.log(errMsg, 'errMsgerrMsg');
-  // console.log(isFailed,'isFailed');
-  
+
   const [formRegister, setFormRegister] = useState({
     nama_lengkap: '',
     nik_anak: '',

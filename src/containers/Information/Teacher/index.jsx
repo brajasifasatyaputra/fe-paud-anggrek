@@ -61,7 +61,7 @@ const TeacherInformation = () => {
 			)
 		)
 	}
-	// console.log(role, '<<< role');
+
   return (
 		<div className={classes.container}>
 			<div className={classes.wrapper}>

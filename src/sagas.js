@@ -207,7 +207,6 @@ function* doPaymentFulfillment({ data, cbSuccess, cbFailed }) {
     }
   } catch (error) {
     if (error.response.status === 400) {
-      console.log(error.response.data.message, '<<<< message');
       cbFailed && cbFailed(error.response.data.message);
     } else if (error.response.status === 404) {
       cbFailed && cbFailed('Mohon Maaf, Kode Pembayaran Anda Salah');
@@ -275,14 +274,12 @@ function* doGetTeacherProfile() {
 
 function* doTestimomny({data, cbSuccess, cbFailed}) {
   try {
-    console.log(data, 'saga');
     const response = yield call(postTestimony, data);
     if (response) {
       cbSuccess && cbSuccess();
     }
   } catch(error) {
     cbFailed && cbFailed();
-    console.log(error);
   }
 }
 

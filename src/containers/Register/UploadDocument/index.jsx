@@ -50,7 +50,6 @@ const UploadDocument = () => {
 	const handleFormChange = (event) => {
 		if (event.target.files) {
       let reader = new FileReader();
-			// console.log(event.target.name, '<<<< event')
 			if (event.target.name === 'kartu_keluarga') {
 				reader.onload = (event) => {
 					setKartuKeluarga(event.target.result)

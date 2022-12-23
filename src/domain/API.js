@@ -106,6 +106,5 @@ export const getProfileTeacher = () => {
 }
 
 export const postTestimony = (data) => {
-  console.log(data, 'API');
   return callAPI(urls.postTestimony, 'post', {}, {}, data);
 }
