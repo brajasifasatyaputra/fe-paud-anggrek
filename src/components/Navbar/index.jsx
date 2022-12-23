@@ -57,30 +57,27 @@ const Navbar = () => {
   const Informationdropdown = () => {
     return (
       <>
-        {/* <div className={classes.overlayX} onMouseLeave={() => setIsShown(true)}> */}
-        {/* <div className={classes.overlayX}> */}
-          <div className={classes.dropdownContainer}>
-            <div className={classes.dropdownWrapper}>
-              <div className={classes.wrapper} onClick={goToActivity}>
-                <div className={classes.activity} onMouseEnter={() => setIsShown(true)} >
-                  <p>Informasi Kegiatan</p>
-                </div>
+        <div className={classes.dropdownContainer}>
+          <div className={classes.dropdownWrapper}>
+            <div className={classes.wrapper} onClick={goToActivity}>
+              <div className={classes.activity} onMouseEnter={() => setIsShown(true)} >
+                <p>Informasi Kegiatan</p>
               </div>
-              <div className={classes.wrapper} onClick={goToTeacher}>
-                <div className={classes.activity} onMouseEnter={() => setIsShown(true)}>
-                  <p>Informasi Guru</p>
-                </div>
+            </div>
+            <div className={classes.wrapper} onClick={goToTeacher}>
+              <div className={classes.activity} onMouseEnter={() => setIsShown(true)}>
+                <p>Informasi Guru</p>
               </div>
-              <div className={classes.wrapper} onClick={goToRegistration}>
-                <div className={classes.activitylast} onMouseEnter={() => setIsShown(true)} 
-                
-                >
-                  <p>Informasi Pendaftaran</p>
-                </div>
+            </div>
+            <div className={classes.wrapper} onClick={goToRegistration}>
+              <div className={classes.activitylast} onMouseEnter={() => setIsShown(true)} 
+              
+              >
+                <p>Informasi Pendaftaran</p>
               </div>
             </div>
           </div>
-        {/* </div> */}
+        </div>
       </>
     );
   };
@@ -130,20 +127,16 @@ const Navbar = () => {
             </a>
             :
             <a className={location.pathname === "/login" ? `${classes.active}` : ""}>
-              {/* <Link className="link" to="/login"> */}
-                <p className={classes.dropdown} onClick={toggleModalLogin}>
-                  Login
-                </p>
-              {/* </Link> */}
+              <p className={classes.dropdown} onClick={toggleModalLogin}>
+                Login
+              </p>
             </a>
           }
           {loginState &&
-            <a className={location.pathname === "/profile" ? `${classes.active}` : ""}>
-              {/* <Link className="link" to="/profile"> */}
-                <p className={classes.dropdown} onClick={logoutHanlder}>
-                  Logout
-                </p>
-              {/* </Link> */}
+            <a className={""}>
+              <p className={classes.dropdown} onClick={logoutHanlder}>
+                Logout
+              </p>
             </a>
           }
           <Popup show={show} setShow={setShow}
