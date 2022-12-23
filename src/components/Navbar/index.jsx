@@ -18,7 +18,6 @@ const Navbar = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const isLoginState = useSelector((state) => state.mainReducer.isLogin);
-  console.log(isLogin, 'isLogin');
 
   const toggleModalLogin = () => {
     setShow(!show);

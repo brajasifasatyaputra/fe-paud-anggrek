@@ -40,7 +40,6 @@ const RegisterPayment = () => {
 	const handleOpen = () => {
 		setOpen(!open);
 	};
-	console.log(student, '<<< student');
 
 	const handleFormChange = (event) => {
 		if (event.target.files) {
@@ -65,7 +64,6 @@ const RegisterPayment = () => {
 			formData.set('nama_bank', input.nama_bank);
 			formData.set('pembayaran_pertama', input.pembayaran_pertama[0], input.pembayaran_pertama[0].name);
 		}
-		// console.log(input, '<<< Input');
 		
 		dispatch(
 			paymentFulfillment(

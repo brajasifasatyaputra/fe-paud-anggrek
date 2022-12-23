@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classes from './index.module.scss';
 import _ from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { getStudentProfile, getTeacherProfile } from '../../store/actions';
 import { postTestimony } from '../../store/actions';
 import Navbar from '../../components/Navbar';
@@ -16,19 +17,17 @@ const Profile = () => {
 	const [isFailed, setIsFailed] = useState(false);
   const [userRole, setUserRole] = useState('');
   const dispatch = useDispatch();
+  const history = useHistory();
   const student = useSelector((state) => state.mainReducer.student);
   const teacher = useSelector((state) => state.mainReducer.teacher);
-  console.log(student, 'student');
   const img = 'https://tse1.mm.bing.net/th?id=OIP.zsaaVp0tIiSnOK-1rYpBnwAAAA&pid=Api&P=0';
 
   useEffect(() => {
     const role = localStorage.getItem('role');
     setUserRole(role);
-    console.log(role, '<<< role')
     if (role === '2') {
       dispatch(getStudentProfile());
     } else {
-      console.log('masuk else')
       dispatch(getTeacherProfile())
     }
   }, [])
@@ -65,7 +64,14 @@ const Profile = () => {
       )
     )
   }
-  console.log(input, 'text');
+
+  const openCertificate = () => {
+    window.open(student?.studentData[0].file, '_blank');
+  }
+
+  const goToPayment = () => {
+    history.push('/register/payment');
+  }
 
   const generateUserProfile = () => {
     return (
@@ -101,12 +107,14 @@ const Profile = () => {
                     <p className={classes.statusTitle}>Status Pendaftaran</p>
                     <div className={classes.status}>{student.status_pendaftaran}</div>
                     <img className={classes.img} src={student.foto_murid ? student.foto_murid : img} alt='avatar' />
-                    <div className={classes.sertification}>Lihat Sertifikat</div>
+                    {!_.isEmpty(student?.studentData) &&
+                      <div className={classes.sertification} onClick={openCertificate}>Lihat Sertifikat</div>
+                    }
                   </div>
                 </div>
               </div>
             </div>
-          <div className={classes.btnUpload}>Upload Bukti Pembayaran</div>
+          <div className={classes.btnUpload} onClick={goToPayment}>Upload Bukti Pembayaran</div>
           <div className={classes.parentBiodataWrapper}>
             <div className={classes.wrapper}>
               <p className={classes.title}>Data Orang Tua/Wali Siswa/i</p>

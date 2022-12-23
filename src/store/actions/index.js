@@ -217,7 +217,6 @@ export const setTeacherProfile = (teacher) => {
 }
 
 export const postTestimony = (data, cbSuccess, cbFailed) => {
-  console.log(data, 'action');
   return {
     type : POST_TESTIMONY,
     data, cbSuccess, cbFailed
